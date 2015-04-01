@@ -1,0 +1,1188 @@
+!SESSION 2014-12-28 13:31:46.944 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pl_PL
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY org.eclipse.cdt.core 1 0 2014-12-28 13:44:51.260
+!MESSAGE Indexed 'Szyfrator_NET' (1 sources, 14 headers) in 0,32 sec: 149 declarations; 440 references; 26 unresolved inclusions; 0 syntax errors; 92 unresolved names (13,51%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2014-12-28 14:43:09.899
+!MESSAGE Indexed 'Sztfrator_NET_BSP' (84 sources, 65 headers) in 1,49 sec: 2 033 declarations; 6 424 references; 121 unresolved inclusions; 7 syntax errors; 290 unresolved names (3,32%)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-12-28 15:37:47.395
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x504a80]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-12-28 15:37:51.025
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x504a80 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2014-12-28 15:37:57.502
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --go, --accept-bad-sysid, --sidp=0x504a80, /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2014-12-28 15:37:57.502
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-12-28 16:45:21.529
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x504a80]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-12-28 16:45:25.249
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x504a80 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2014-12-28 16:45:31.585
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --go, --accept-bad-sysid, --sidp=0x504a80, /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2014-12-28 16:45:31.588
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-12-28 17:00:01.875
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x10104c80 --id=0x0 --timestamp=1419689320]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-12-28 17:00:06.154
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x10104c80 --id=0x0 --timestamp=1419689320 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2014-12-28 17:00:13.322
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --go, --sidp=0x10104c80, --id=0x0, --timestamp=1419689320, /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2014-12-28 17:00:13.326
+!MESSAGE Downloading ELF Process failed
+!SESSION 2015-02-28 13:54:16.616 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pl_PL
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-28 14:50:14.280
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x10104c80 --id=0x0 --timestamp=1419689320]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-28 14:50:18.774
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x10104c80 --id=0x0 --timestamp=1419689320 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-02-28 14:50:26.330
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --go, --sidp=0x10104c80, --id=0x0, --timestamp=1419689320, /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-02-28 14:50:26.336
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-28 16:11:52.736
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x10104c80 --id=0x0 --timestamp=1419689320]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-28 16:11:57.267
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x10104c80 --id=0x0 --timestamp=1419689320 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-02-28 16:12:04.369
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --go, --sidp=0x10104c80, --id=0x0, --timestamp=1419689320, /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-02-28 16:12:04.374
+!MESSAGE Downloading ELF Process failed
+!SESSION 2015-02-28 18:44:27.355 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pl_PL
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-02-28 18:47:09.132
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:555)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:854)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:703)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:937)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1141)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-02-28 18:47:09.147
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:555)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:854)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:703)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:937)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1141)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-28 18:51:48.288
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x10104c80 --id=0x0 --timestamp=1419689320]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-28 18:51:52.343
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x10104c80 --id=0x0 --timestamp=1419689320 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-02-28 18:51:59.223
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --go, --sidp=0x10104c80, --id=0x0, --timestamp=1419689320, /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-02-28 18:51:59.223
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-28 18:52:24.009
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x10104c80]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-28 18:52:27.325
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x10104c80 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-02-28 18:52:33.289
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --go, --accept-bad-sysid, --sidp=0x10104c80, /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-02-28 18:52:33.289
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-28 18:52:55.155
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x10104c80]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-28 18:52:58.460
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x10104c80 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-02-28 18:53:04.425
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --go, --accept-bad-sysid, --sidp=0x10104c80, /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-02-28 18:53:04.425
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-28 18:53:12.493
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x10104c80]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-28 18:53:15.730
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x10104c80 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-02-28 18:53:21.665
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --go, --accept-bad-sysid, --sidp=0x10104c80, /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-02-28 18:53:21.665
+!MESSAGE Downloading ELF Process failed
+!SESSION 2015-03-19 19:49:53.824 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pl_PL
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-19 19:53:09.699
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x10104e80 --id=0x0 --timestamp=1426789924]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-19 19:53:13.895
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x10104e80 --id=0x0 --timestamp=1426789924 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-19 19:53:20.827
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --go, --sidp=0x10104e80, --id=0x0, --timestamp=1426789924, /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-19 19:53:20.827
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-19 19:53:45.409
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x10104e80 --id=0x0 --timestamp=1426789924]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-19 19:53:49.566
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x10104e80 --id=0x0 --timestamp=1426789924]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-19 19:55:09.585
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-19 19:55:11.340
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x10104e80 --id=0x0 --timestamp=1426789924]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-19 19:55:15.422
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x10104e80 --id=0x0 --timestamp=1426789924 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-19 19:55:22.455
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --go, --sidp=0x10104e80, --id=0x0, --timestamp=1426789924, /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-19 19:55:22.460
+!MESSAGE Downloading ELF Process failed
+!SESSION 2015-03-19 19:58:54.120 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pl_PL
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-19 19:59:26.005
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x10104e80 --id=0x0 --timestamp=1426789924]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-19 19:59:30.064
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x10104e80 --id=0x0 --timestamp=1426789924 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-19 19:59:37.102
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --go, --sidp=0x10104e80, --id=0x0, --timestamp=1426789924, /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-19 19:59:37.102
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-19 20:02:03.004
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x10104e80 --id=0x0 --timestamp=1426789924]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-19 20:02:07.142
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x10104e80 --id=0x0 --timestamp=1426789924 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-19 20:02:13.921
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --go, --sidp=0x10104e80, --id=0x0, --timestamp=1426789924, /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-19 20:02:13.929
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-19 20:02:28.054
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x10104e80 --id=0x0 --timestamp=1426789924]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-19 20:02:32.150
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x10104e80 --id=0x0 --timestamp=1426789924 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-19 20:02:39.030
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --go, --sidp=0x10104e80, --id=0x0, --timestamp=1426789924, /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-19 20:02:39.035
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-19 20:46:10.896
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x10104e80]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-19 20:46:14.709
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x10104e80 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-19 20:46:20.922
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --go, --accept-bad-sysid, --sidp=0x10104e80, /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-19 20:46:20.922
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.core 4 0 2015-03-19 21:16:58.716
+!MESSAGE Error executing 'nios2-bsp-generate-files --bsp-dir . --settings settings.bsp', unexpected return code 1.
+
+Error message:
+
+SEVERE: [Error] hal: <b>hal.linker.exception_stack_memory_region_name</b> (sdram) out of range. Valid ranges: [none:none, reset:reset, main_memory:main_memory, descriptor_memory0:descriptor_memory0, descriptor_memory1:descriptor_memory1, descriptor_memory:descriptor_memory]
+SEVERE: [Error] hal: <b>hal.linker.exception_stack_memory_region_name</b> (sdram) out of range. Valid ranges: [none:none, reset:reset, main_memory:main_memory, descriptor_memory0:descriptor_memory0, descriptor_memory1:descriptor_memory1, descriptor_memory:descriptor_memory]
+SEVERE: nios2-bsp-generate-files failed.
+
+!SESSION 2015-03-20 19:23:45.431 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pl_PL
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY com.altera.sbtgui.core 4 0 2015-03-20 19:46:02.896
+!MESSAGE Error executing 'nios2-bsp-generate-files --bsp-dir . --settings settings.bsp', unexpected return code 1.
+
+Error message:
+
+SEVERE: [Error] hal: <b>hal.linker.exception_stack_memory_region_name</b> (sdram) out of range. Valid ranges: [none:none, reset:reset, main_memory:main_memory, descriptor_memory0:descriptor_memory0, descriptor_memory1:descriptor_memory1, descriptor_memory:descriptor_memory]
+SEVERE: [Error] hal: <b>hal.linker.exception_stack_memory_region_name</b> (sdram) out of range. Valid ranges: [none:none, reset:reset, main_memory:main_memory, descriptor_memory0:descriptor_memory0, descriptor_memory1:descriptor_memory1, descriptor_memory:descriptor_memory]
+SEVERE: nios2-bsp-generate-files failed.
+
+
+!ENTRY com.altera.sbtgui.core 4 0 2015-03-20 20:27:47.168
+!MESSAGE Error executing 'nios2-bsp-generate-files --bsp-dir . --settings settings.bsp', unexpected return code 1.
+
+Error message:
+
+SEVERE: [Error] hal: <b>hal.linker.exception_stack_memory_region_name</b> (sdram) out of range. Valid ranges: [none:none, reset:reset, main_memory:main_memory, descriptor_memory1:descriptor_memory1, descriptor_memory:descriptor_memory]
+SEVERE: [Error] hal: <b>hal.linker.exception_stack_memory_region_name</b> (sdram) out of range. Valid ranges: [none:none, reset:reset, main_memory:main_memory, descriptor_memory1:descriptor_memory1, descriptor_memory:descriptor_memory]
+SEVERE: nios2-bsp-generate-files failed.
+
+!SESSION 2015-03-20 20:41:06.398 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pl_PL
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY com.altera.sbtgui.core 4 0 2015-03-20 20:47:24.575
+!MESSAGE Error executing 'nios2-bsp-generate-files --bsp-dir . --settings settings.bsp', unexpected return code 1.
+
+Error message:
+
+SEVERE: BSP not valid.
+SEVERE: BSP not valid.
+SEVERE: nios2-bsp-generate-files failed.
+
+
+!ENTRY com.altera.sbtgui.core 4 0 2015-03-20 20:49:52.851
+!MESSAGE Error executing 'nios2-bsp-generate-files --bsp-dir . --settings settings.bsp', unexpected return code 1.
+
+Error message:
+
+SEVERE: Section ".rodata" has no memory region mapping.
+SEVERE: Section ".rodata" has no memory region mapping.
+SEVERE: nios2-bsp-generate-files failed.
+
+
+!ENTRY com.altera.sbtgui.core 4 0 2015-03-20 20:51:16.119
+!MESSAGE Error executing 'nios2-bsp-generate-files --bsp-dir . --settings settings.bsp', unexpected return code 1.
+
+Error message:
+
+SEVERE: BSP not valid.
+SEVERE: BSP not valid.
+SEVERE: nios2-bsp-generate-files failed.
+
+
+!ENTRY com.altera.sbtgui.core 4 0 2015-03-20 20:52:07.440
+!MESSAGE Error executing 'nios2-bsp-generate-files --bsp-dir . --settings settings.bsp', unexpected return code 1.
+
+Error message:
+
+SEVERE: BSP not valid.
+SEVERE: BSP not valid.
+SEVERE: nios2-bsp-generate-files failed.
+
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-20 21:26:33.319
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-20 21:26:37.452
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-20 21:27:49.169
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-20 21:27:50.258
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-20 21:27:54.405
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+!SESSION 2015-03-21 11:36:33.662 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pl_PL
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 12:03:58.098
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 12:04:02.319
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 12:17:20.538
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 12:17:21.579
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 12:17:25.713
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 13:42:41.017
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 13:42:42.428
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 13:42:47.189
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 13:48:44.119
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 13:48:45.216
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 13:48:49.321
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 14:16:52.141
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 14:16:53.290
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 14:16:57.390
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 14:17:50.765
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 14:17:52.085
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 14:17:56.152
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 14:53:25.129
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 14:53:26.578
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 14:53:30.918
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 15:23:43.230
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 15:23:44.349
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 15:23:48.419
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 16:03:34.179
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 16:03:35.217
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 16:03:39.522
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 16:07:33.865
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 16:07:34.971
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-21 16:07:39.149
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+!SESSION 2015-03-28 11:45:00.874 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pl_PL
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY org.eclipse.core.resources 2 10035 2015-03-28 11:51:09.486
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-28 13:05:06.360
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:555)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:854)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:703)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:937)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1141)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-28 13:05:09.333
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:555)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:854)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:703)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:937)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1141)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-28 13:50:20.718
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:555)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:854)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:703)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:937)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1141)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-28 13:50:20.761
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:555)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:854)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:703)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:937)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1141)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 13:58:34.207
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 13:58:38.663
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:19:12.499
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:19:13.972
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:19:18.716
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:25:33.713
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:25:34.718
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:25:38.872
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:30:18.660
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:30:19.979
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:30:24.116
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:35:07.983
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:35:09.263
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:35:13.436
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:35:40.428
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:35:41.479
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:35:45.626
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:36:39.354
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:36:43.440
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:37:14.988
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:37:16.124
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:37:20.160
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:37:40.952
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:37:41.977
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:37:46.114
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:38:07.184
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:38:08.231
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:38:12.292
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:52:55.829
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:52:56.942
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:53:00.959
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:56:16.793
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:56:17.824
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 15:56:21.933
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 16:56:38.376
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 16:56:40.333
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 16:56:44.701
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 17:33:46.531
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 17:33:47.682
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 17:33:51.854
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 17:34:29.142
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 17:34:30.225
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 17:34:34.301
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 18:08:14.740
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 18:08:15.745
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 18:08:19.827
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 18:14:27.143
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 18:14:28.219
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 18:14:32.443
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 20:24:57.560
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 20:24:59.783
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 20:25:04.098
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 20:26:17.654
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 20:26:18.766
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 20:26:23.027
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 20:31:32.095
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 20:31:33.216
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 20:31:37.284
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 20:34:55.968
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 20:34:58.448
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 20:35:02.194
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 20:35:02.788
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-28 20:35:06.418
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+!SESSION 2015-03-29 12:50:58.396 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pl_PL
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 14:49:53.817
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 14:49:58.947
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 16:06:08.714
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 16:06:10.558
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 16:06:14.899
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 16:07:06.376
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 16:07:07.548
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 16:07:11.935
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 16:08:16.144
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 16:08:17.316
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 16:08:21.496
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 16:09:40.561
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 16:09:41.995
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 16:09:46.071
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 16:14:53.251
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 16:14:54.501
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 16:14:58.620
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 16:40:46.987
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 16:40:48.643
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 16:40:52.731
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 16:57:44.978
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 16:57:46.060
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-29 16:57:50.279
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+!SESSION 2015-03-30 19:05:48.654 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pl_PL
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:06:29.519
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:06:33.793
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:09:26.140
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:09:27.187
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:09:31.610
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:10:21.820
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:10:23.102
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:10:27.093
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:11:08.356
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:11:09.403
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:11:13.654
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:12:00.378
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:12:01.425
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:12:05.534
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:12:50.209
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:12:51.508
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:12:55.563
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:13:21.187
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:13:22.164
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:13:26.208
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:15:00.195
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:15:01.251
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:15:01.895
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:15:05.511
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:15:06.136
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-30 20:15:13.138
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --go, --sidp=0x103e40, --id=0x0, --timestamp=1426877575, /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-30 20:15:13.138
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:17:09.839
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:17:10.902
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:17:15.013
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:22:29.467
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:22:30.605
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:22:34.733
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:24:38.603
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:24:42.655
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:39:08.408
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:39:09.452
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:39:13.484
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:40:05.043
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:40:06.119
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:40:10.139
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:41:02.905
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:41:03.999
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:41:08.201
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:43:09.606
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:43:11.263
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:43:15.571
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:44:42.821
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:44:43.946
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:44:47.970
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:45:45.696
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:45:46.706
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:45:50.789
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:46:47.833
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:46:48.834
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 20:46:53.010
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 21:03:05.392
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 21:03:06.329
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 21:03:10.384
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 21:07:29.978
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 21:07:31.025
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 21:07:35.201
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 21:37:37.307
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 21:37:38.329
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 21:37:42.684
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-30 21:39:36.739
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-30 21:39:42.788
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:503)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:854)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:703)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:937)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1141)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-30 21:39:42.790
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:503)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:854)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:703)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:937)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1141)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-30 21:41:57.389
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:503)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:854)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:703)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:937)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1141)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-30 21:41:57.393
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:503)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:854)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:703)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:937)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1141)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-30 21:42:21.684
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:503)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:854)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:703)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:937)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1141)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-30 21:42:21.688
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:503)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:854)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:703)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:937)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1141)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-30 21:43:25.102
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:503)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:854)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:703)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:937)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1141)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-03-30 21:43:25.107
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:503)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:854)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:703)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:937)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1141)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SESSION 2015-04-01 18:41:12.141 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pl_PL
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY org.eclipse.core.resources 2 10035 2015-04-01 18:50:21.879
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-04-01 19:17:26.216
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:555)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:854)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:703)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:937)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1141)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-04-01 19:17:26.233
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:555)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:854)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:703)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:937)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1141)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-04-01 19:20:06.639
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:555)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:854)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:703)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:937)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1141)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-04-01 19:20:06.646
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:555)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:854)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:703)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:937)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1141)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-01 19:24:14.723
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-01 19:24:19.025
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-01 19:24:55.623
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-01 19:24:56.831
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-01 19:25:00.866
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+!SESSION 2015-04-01 19:28:26.734 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pl_PL
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-01 19:35:30.872
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-01 19:35:34.959
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]
+!SESSION 2015-04-01 19:40:19.273 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pl_PL
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-01 19:45:03.326
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x103e40 --id=0x0 --timestamp=1426877575]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-01 19:45:07.422
+!MESSAGE Executing: [C:/altera/13.1/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x103e40 --id=0x0 --timestamp=1426877575 /cygdrive/c/Users/Krzysiek/NIOSworkspace/Szyfrator_NET/Szyfrator_NET.elf]

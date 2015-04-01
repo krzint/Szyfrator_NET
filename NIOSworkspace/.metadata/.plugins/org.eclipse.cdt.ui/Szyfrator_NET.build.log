@@ -1,0 +1,10 @@
+
+**** Build of configuration Nios II for project Szyfrator_NET ****
+
+make all 
+Info: Building ../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP
+make --no-print-directory -C ../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP
+[BSP build complete]
+[Szyfrator_NET build complete]
+
+**** Build Finished ****
