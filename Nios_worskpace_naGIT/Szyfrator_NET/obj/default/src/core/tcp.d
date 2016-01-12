@@ -16,6 +16,10 @@ obj/default/src/core/tcp.o: src/core/tcp.c arch/../lwip/opt.h \
  arch/../lwip/../lwip/../lwip/../arch/epstruct.h \
  arch/../lwip/../lwip/../lwip/inet.h arch/../lwip/../lwip/../lwip/pbuf.h \
  arch/../lwip/../lwip/../lwip/../lwip/err.h arch/../lwip/../lwip/udp.h \
+ arch/../lwip/../lwip/../Net_szyfr.h \
+ ../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/system.h \
+ ../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/linker.h \
+ ../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/HAL/inc/alt_types.h \
  arch/../lwip/../lwip/../lwip/netif.h arch/../lwip/../lwip/../lwip/ip.h \
  arch/../lwip/../lwip/../lwip/../lwip/def.h \
  arch/../lwip/../lwip/../lwip/../lwip/pbuf.h \
@@ -82,6 +86,14 @@ arch/../lwip/../lwip/../lwip/pbuf.h:
 arch/../lwip/../lwip/../lwip/../lwip/err.h:
 
 arch/../lwip/../lwip/udp.h:
+
+arch/../lwip/../lwip/../Net_szyfr.h:
+
+../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/system.h:
+
+../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/linker.h:
+
+../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/HAL/inc/alt_types.h:
 
 arch/../lwip/../lwip/../lwip/netif.h:
 

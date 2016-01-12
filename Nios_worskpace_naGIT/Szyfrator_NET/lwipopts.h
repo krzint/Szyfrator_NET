@@ -536,7 +536,7 @@
  * LWIP_DHCP==1: Enable DHCP module.
  */
 #ifndef LWIP_DHCP
-#define LWIP_DHCP                       1
+#define LWIP_DHCP                       0
 #endif
 
 /**
@@ -1551,10 +1551,10 @@
 #endif
  
 /**
- * CHECKSUM_CHECK_UDP==1: Check checksums in software for incoming UDP packets.
+ * TODO CHECKSUM_CHECK_UDP==1: Check checksums in software for incoming UDP packets.
  */
 #ifndef CHECKSUM_CHECK_UDP
-#define CHECKSUM_CHECK_UDP              1
+#define CHECKSUM_CHECK_UDP              0
 #endif
 
 /**

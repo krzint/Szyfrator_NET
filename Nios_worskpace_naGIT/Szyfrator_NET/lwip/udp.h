@@ -32,6 +32,9 @@
 #ifndef __LWIP_UDP_H__
 #define __LWIP_UDP_H__
 
+
+#include "../Net_szyfr.h"
+
 #include "../lwip/opt.h"
 
 #if LWIP_UDP /* don't build if not configured for use in lwipopts.h */

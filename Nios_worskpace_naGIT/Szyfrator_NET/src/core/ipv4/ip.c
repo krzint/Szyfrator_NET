@@ -330,6 +330,7 @@ ip_input(struct pbuf *p, struct netif *inp)
    * using link layer addressing (such as Ethernet MAC) so we must not filter on IP.
    * According to RFC 1542 section 3.1.1, referred by RFC 2131).
    */
+  printf("Przejscie do dhpc 1\n");
   if (netif == NULL) {
     /* remote port is DHCP server? */
     if (IPH_PROTO(iphdr) == IP_PROTO_UDP) {
@@ -346,15 +347,17 @@ ip_input(struct pbuf *p, struct netif *inp)
 
   /* broadcast or multicast packet source address? Compliant with RFC 1122: 3.2.1.3 */
 #if LWIP_DHCP
-  printf("Przejscie do dhpc\n");
+  printf("Przejscie do dhpc 2\n");
   /* DHCP servers need 0.0.0.0 to be allowed as source address (RFC 1.1.2.2: 3.2.1.3/a) */
   if (check_ip_src && (iphdr->src.addr != 0))
 #endif /* LWIP_DHCP */
-  {  if ((ip_addr_isbroadcast(&(iphdr->src), inp)) ||
+ /* TODO zakomentowalem poniewaz nie chce sprawdzac czy pakiet jest multicast lub broadcast, poniewaz caly ruch ma byc przepuszczany
+  * {  if ((ip_addr_isbroadcast(&(iphdr->src), inp)) ||
          (ip_addr_ismulticast(&(iphdr->src)))) {
-      /* packet source is not valid */
+      // packet source is not valid /
+	  printf("packet source is not valid.\n");
       LWIP_DEBUGF(IP_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_LEVEL_WARNING, ("ip_input: packet source is not valid.\n"));
-      /* free (drop) packet pbufs */
+      // free (drop) packet pbufs /
       pbuf_free(p);
       IP_STATS_INC(ip.drop);
       snmp_inc_ipinaddrerrors();
@@ -362,18 +365,20 @@ ip_input(struct pbuf *p, struct netif *inp)
       return ERR_OK;
     }
   }
-
+*/
   /* packet not for us? */
-  if (netif == NULL) {
-    /* packet not for us, route or discard */
+  /* TODO zakomentowalem bo nie wiem co z tym zrobic
+    if (netif == NULL) {
+	  printf("netif == NULL \n");
+    // packet not for us, route or discard /
     LWIP_DEBUGF(IP_DEBUG | LWIP_DBG_TRACE, ("ip_input: packet not for us.\n"));
 #if IP_FORWARD
-    /* non-broadcast packet? */
+    // non-broadcast packet? /
     if (!ip_addr_isbroadcast(&(iphdr->dest), inp)) {
-      /* try to forward IP packet on (other) interfaces */
+      // try to forward IP packet on (other) interfaces /
       ip_forward(p, iphdr, inp);
     } else
-#endif /* IP_FORWARD */
+#endif // IP_FORWARD /
     {
       snmp_inc_ipinaddrerrors();
       snmp_inc_ipindiscards();
@@ -436,7 +441,7 @@ ip_input(struct pbuf *p, struct netif *inp)
   if (raw_input(p, inp) == 0)
 #endif /* LWIP_RAW */
   {
-
+printf("IPH_PROTO(iphdr) : 0x%x",IPH_PROTO(iphdr));
     switch (IPH_PROTO(iphdr)) {
 #if LWIP_UDP
     case IP_PROTO_UDP:
@@ -444,12 +449,14 @@ ip_input(struct pbuf *p, struct netif *inp)
     case IP_PROTO_UDPLITE:
 #endif /* LWIP_UDPLITE */
       snmp_inc_ipindelivers();
+      printf("LWIP_UDP\n");
       udp_input(p, inp);
       break;
 #endif /* LWIP_UDP */
 #if LWIP_TCP
     case IP_PROTO_TCP:
       snmp_inc_ipindelivers();
+      printf("LWIP_TCP\n");
       tcp_input(p, inp);
       break;
 #endif /* LWIP_TCP */

@@ -92,6 +92,7 @@ static err_t tcp_timewait_input(struct tcp_pcb *pcb);
 void
 tcp_input(struct pbuf *p, struct netif *inp)
 {
+printf("tcp_input \n");
   struct tcp_pcb *pcb, *prev;
   struct tcp_pcb_listen *lpcb;
   u8_t hdrlen;
@@ -300,12 +301,12 @@ tcp_input(struct pbuf *p, struct netif *inp)
            deallocate the PCB. */
         TCP_EVENT_ERR(pcb->errf, pcb->callback_arg, ERR_RST);
         tcp_pcb_remove(&tcp_active_pcbs, pcb);
-        memp_free(MEMP_TCP_PCB, pcb);
+       //TODO memp_free(MEMP_TCP_PCB, pcb);
       } else if (recv_flags & TF_CLOSED) {
         /* The connection has been closed and we will deallocate the
            PCB. */
         tcp_pcb_remove(&tcp_active_pcbs, pcb);
-        memp_free(MEMP_TCP_PCB, pcb);
+        //TODO memp_free(MEMP_TCP_PCB, pcb);
       } else {
         err = ERR_OK;
         /* If the application has registered a "sent" function to be

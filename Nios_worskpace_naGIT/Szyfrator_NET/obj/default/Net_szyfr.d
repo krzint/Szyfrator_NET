@@ -31,23 +31,14 @@ obj/default/Net_szyfr.o: Net_szyfr.c \
  lwip/../lwip/../lwip/inet.h lwip/../lwip/../lwip/../lwip/opt.h \
  lwip/../lwip/../arch/bpstruct.h lwip/../lwip/../arch/epstruct.h \
  lwip/../lwip/inet.h lwip/../lwip/pbuf.h lwip/../lwip/../lwip/err.h \
- lwip/dhcp.h lwip/../lwip/netif.h lwip/../lwip/udp.h \
- lwip/../lwip/../lwip/pbuf.h lwip/../lwip/../lwip/netif.h \
- lwip/../lwip/../lwip/ip_addr.h lwip/../lwip/../lwip/ip.h \
- lwip/../lwip/../lwip/../lwip/def.h \
- lwip/../lwip/../lwip/../lwip/../lwip/arch.h \
- lwip/../lwip/../lwip/../lwip/pbuf.h \
- lwip/../lwip/../lwip/../lwip/ip_addr.h \
- lwip/../lwip/../lwip/../lwip/err.h lwip/../lwip/../lwip/../lwip/netif.h \
- lwip/../lwip/../lwip/../arch/bpstruct.h \
- lwip/../lwip/../lwip/../arch/epstruct.h lwip/../arch/bpstruct.h \
- lwip/../arch/epstruct.h lwip/tcp.h lwip/../lwip/sys.h lwip/../lwip/mem.h \
- lwip/../lwip/ip.h lwip/../lwip/icmp.h lwip/stats.h lwip/../lwip/memp.h \
- lwip/../lwip/../lwip/memp_std.h lwip/ip_frag.h lwip/ip_addr.h \
- netif/etharp.h netif/../lwip/opt.h netif/../lwip/pbuf.h \
- netif/../lwip/ip_addr.h netif/../lwip/netif.h netif/../lwip/ip.h \
- netif/../arch/bpstruct.h netif/../arch/epstruct.h alteraTseEthernetif.h \
- lwip/err.h
+ lwip/tcp.h lwip/../lwip/sys.h lwip/../lwip/mem.h lwip/../lwip/ip.h \
+ lwip/../lwip/../lwip/def.h lwip/../lwip/../lwip/pbuf.h \
+ lwip/../lwip/../lwip/ip_addr.h lwip/../lwip/../lwip/netif.h \
+ lwip/../lwip/icmp.h lwip/../arch/bpstruct.h lwip/../arch/epstruct.h \
+ lwip/ip_frag.h lwip/../lwip/netif.h lwip/ip_addr.h netif/etharp.h \
+ netif/../lwip/opt.h netif/../lwip/pbuf.h netif/../lwip/ip_addr.h \
+ netif/../lwip/netif.h netif/../lwip/ip.h netif/../arch/bpstruct.h \
+ netif/../arch/epstruct.h alteraTseEthernetif.h lwip/err.h
 
 ../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/drivers/inc/altera_avalon_sgdma.h:
 
@@ -135,40 +126,6 @@ lwip/../lwip/pbuf.h:
 
 lwip/../lwip/../lwip/err.h:
 
-lwip/dhcp.h:
-
-lwip/../lwip/netif.h:
-
-lwip/../lwip/udp.h:
-
-lwip/../lwip/../lwip/pbuf.h:
-
-lwip/../lwip/../lwip/netif.h:
-
-lwip/../lwip/../lwip/ip_addr.h:
-
-lwip/../lwip/../lwip/ip.h:
-
-lwip/../lwip/../lwip/../lwip/def.h:
-
-lwip/../lwip/../lwip/../lwip/../lwip/arch.h:
-
-lwip/../lwip/../lwip/../lwip/pbuf.h:
-
-lwip/../lwip/../lwip/../lwip/ip_addr.h:
-
-lwip/../lwip/../lwip/../lwip/err.h:
-
-lwip/../lwip/../lwip/../lwip/netif.h:
-
-lwip/../lwip/../lwip/../arch/bpstruct.h:
-
-lwip/../lwip/../lwip/../arch/epstruct.h:
-
-lwip/../arch/bpstruct.h:
-
-lwip/../arch/epstruct.h:
-
 lwip/tcp.h:
 
 lwip/../lwip/sys.h:
@@ -177,15 +134,23 @@ lwip/../lwip/mem.h:
 
 lwip/../lwip/ip.h:
 
+lwip/../lwip/../lwip/def.h:
+
+lwip/../lwip/../lwip/pbuf.h:
+
+lwip/../lwip/../lwip/ip_addr.h:
+
+lwip/../lwip/../lwip/netif.h:
+
 lwip/../lwip/icmp.h:
 
-lwip/stats.h:
+lwip/../arch/bpstruct.h:
 
-lwip/../lwip/memp.h:
-
-lwip/../lwip/../lwip/memp_std.h:
+lwip/../arch/epstruct.h:
 
 lwip/ip_frag.h:
+
+lwip/../lwip/netif.h:
 
 lwip/ip_addr.h:
 

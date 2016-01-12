@@ -139,6 +139,7 @@ netif_add(struct netif *netif, struct ip_addr *ipaddr, struct ip_addr *netmask,
 
   /* call user specified initialization function for netif */
   if (init(netif) != ERR_OK) {
+	  printf("RETURN NULL");
     return NULL;
   }
 

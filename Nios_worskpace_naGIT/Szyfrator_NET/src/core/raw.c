@@ -121,6 +121,7 @@ raw_input(struct pbuf *p, struct netif *inp)
     prev = pcb;
     pcb = pcb->next;
   }
+  printf("raw_input eaten : %i /n",eaten);
   return eaten;
 }
 
@@ -318,7 +319,7 @@ raw_remove(struct raw_pcb *pcb)
       }
     }
   }
-  memp_free(MEMP_RAW_PCB, pcb);
+  //TODO memp_free(MEMP_RAW_PCB, pcb);
 }
 
 /**
@@ -337,7 +338,7 @@ raw_new(u8_t proto) {
 
   LWIP_DEBUGF(RAW_DEBUG | LWIP_DBG_TRACE, ("raw_new\n"));
 
-  pcb = memp_malloc(MEMP_RAW_PCB);
+  //TODO pcb = memp_malloc(MEMP_RAW_PCB);
   /* could allocate RAW PCB? */
   if (pcb != NULL) {
     /* initialize PCB to all zeroes */

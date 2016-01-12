@@ -348,13 +348,14 @@ pbuf_realloc(struct pbuf *p, u16_t new_len)
   struct pbuf *q;
   u16_t rem_len; /* remaining length */
   s32_t grow;
-
+  printf("pbuf_realloc - wewnatrz funkcji \n");
+  /* TODO odkomentowaæ jak cos
   LWIP_ASSERT("pbuf_realloc: p != NULL", p != NULL);
   LWIP_ASSERT("pbuf_realloc: sane p->type", p->type == PBUF_POOL ||
               p->type == PBUF_ROM ||
               p->type == PBUF_RAM ||
               p->type == PBUF_REF);
-
+*/
   /* desired length larger than current length? */
   if (new_len >= p->tot_len) {
     /* enlarging not yet supported */
@@ -443,7 +444,7 @@ pbuf_header(struct pbuf *p, s16_t header_size_increment)
   if (header_size_increment < 0){
     increment_magnitude = -header_size_increment;
     /* Check that we aren't going to move off the end of the pbuf */
-    LWIP_ERROR("increment_magnitude <= p->len", (increment_magnitude <= p->len), return 1;);
+    //TODO LWIP_ERROR("increment_magnitude <= p->len", (increment_magnitude <= p->len), return 1;);
   } else {
     increment_magnitude = header_size_increment;
 #if 0
@@ -478,6 +479,7 @@ pbuf_header(struct pbuf *p, s16_t header_size_increment)
       /* restore old payload pointer */
       p->payload = payload;
       /* bail out unsuccesfully */
+      printf("pbuf_header: bail out unsuccesfully\n");
       return 1;
     }
   /* pbuf types refering to external payloads? */
@@ -490,6 +492,7 @@ pbuf_header(struct pbuf *p, s16_t header_size_increment)
     } else {
       /* cannot expand payload to front (yet!)
        * bail out unsuccesfully */
+    	printf("pbuf_header: bail out unsuccesfully\n");
       return 1;
     }
   }

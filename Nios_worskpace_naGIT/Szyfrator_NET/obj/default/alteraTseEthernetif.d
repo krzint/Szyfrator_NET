@@ -11,6 +11,10 @@ obj/default/alteraTseEthernetif.o: alteraTseEthernetif.c lwip/opt.h \
  lwip/../lwip/../lwip/../arch/bpstruct.h \
  lwip/../lwip/../lwip/../arch/epstruct.h lwip/../lwip/../lwip/inet.h \
  lwip/../lwip/../lwip/pbuf.h lwip/../lwip/udp.h \
+ lwip/../lwip/../Net_szyfr.h \
+ ../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/system.h \
+ ../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/linker.h \
+ ../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/HAL/inc/alt_types.h \
  lwip/../lwip/../lwip/netif.h lwip/../lwip/../lwip/ip.h \
  lwip/../lwip/../lwip/../lwip/def.h lwip/../lwip/../lwip/../lwip/pbuf.h \
  lwip/../lwip/../lwip/../lwip/ip_addr.h \
@@ -23,9 +27,6 @@ obj/default/alteraTseEthernetif.o: alteraTseEthernetif.c lwip/opt.h \
  ../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/HAL/inc/sys/alt_irq.h \
  arch/errno.h \
  ../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/HAL/inc/nios2.h \
- ../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/HAL/inc/alt_types.h \
- ../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/system.h \
- ../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/linker.h \
  ../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/HAL/inc/sys/alt_cache.h
 
 lwip/opt.h:
@@ -88,6 +89,14 @@ lwip/../lwip/../lwip/pbuf.h:
 
 lwip/../lwip/udp.h:
 
+lwip/../lwip/../Net_szyfr.h:
+
+../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/system.h:
+
+../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/linker.h:
+
+../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/HAL/inc/alt_types.h:
+
 lwip/../lwip/../lwip/netif.h:
 
 lwip/../lwip/../lwip/ip.h:
@@ -135,11 +144,5 @@ lwip/err.h:
 arch/errno.h:
 
 ../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/HAL/inc/nios2.h:
-
-../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/HAL/inc/alt_types.h:
-
-../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/system.h:
-
-../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/linker.h:
 
 ../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/HAL/inc/sys/alt_cache.h:

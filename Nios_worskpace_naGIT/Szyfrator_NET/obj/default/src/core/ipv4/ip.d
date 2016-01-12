@@ -16,11 +16,15 @@ obj/default/src/core/ipv4/ip.o: src/core/ipv4/ip.c arch/../lwip/opt.h \
  arch/../lwip/ip_frag.h arch/../lwip/../lwip/ip.h arch/../lwip/inet.h \
  arch/../lwip/inet_chksum.h arch/../lwip/netif.h arch/../lwip/icmp.h \
  arch/../lwip/igmp.h arch/../lwip/raw.h arch/../lwip/../lwip/inet.h \
- arch/../lwip/udp.h arch/../lwip/tcp.h arch/../lwip/../lwip/sys.h \
- arch/../lwip/../lwip/mem.h arch/../lwip/../lwip/icmp.h \
- arch/../lwip/snmp.h arch/../lwip/../lwip/udp.h arch/../lwip/dhcp.h \
- arch/../lwip/stats.h arch/../lwip/../lwip/memp.h \
- arch/../lwip/../lwip/../lwip/memp_std.h arch/../arch/perf.h
+ arch/../lwip/udp.h arch/../lwip/../Net_szyfr.h \
+ ../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/system.h \
+ ../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/linker.h \
+ ../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/HAL/inc/alt_types.h \
+ arch/../lwip/tcp.h arch/../lwip/../lwip/sys.h arch/../lwip/../lwip/mem.h \
+ arch/../lwip/../lwip/icmp.h arch/../lwip/snmp.h \
+ arch/../lwip/../lwip/udp.h arch/../lwip/dhcp.h arch/../lwip/stats.h \
+ arch/../lwip/../lwip/memp.h arch/../lwip/../lwip/../lwip/memp_std.h \
+ arch/../arch/perf.h
 
 arch/../lwip/opt.h:
 
@@ -93,6 +97,14 @@ arch/../lwip/raw.h:
 arch/../lwip/../lwip/inet.h:
 
 arch/../lwip/udp.h:
+
+arch/../lwip/../Net_szyfr.h:
+
+../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/system.h:
+
+../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/linker.h:
+
+../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/HAL/inc/alt_types.h:
 
 arch/../lwip/tcp.h:
 
