@@ -34,6 +34,43 @@
 
 
 #include "../Net_szyfr.h"
+ unsigned char udp_data[1024];
+unsigned char  dane_udp_ciph [1024];
+unsigned char  dane_udp_deciph [1024];
+// docelowy adres IP poddawany szyfrowaniu danych UDP
+u16_t ciph_ip4_addr1;
+u16_t ciph_ip4_addr2;
+u16_t ciph_ip4_addr3;
+u16_t ciph_ip4_addr4;
+u16_t ciph_ip4_port;
+//zmienna pomocnicza bedaca wynikiem tego czy dane maja zostac zaszyfrowane
+unsigned int ifcipher_udp;
+u16_t dest_ip4_addr1;
+u16_t dest_ip4_addr2;
+u16_t dest_ip4_addr3;
+u16_t dest_ip4_addr4;
+u16_t dest_ip4_port;
+
+
+// Ÿród³owy adres IP poddawany deszyfrowaniu danych UDP
+u16_t deciph_ip4_addr1;
+u16_t deciph_ip4_addr2;
+u16_t deciph_ip4_addr3;
+u16_t deciph_ip4_addr4;
+u16_t deciph_ip4_port;
+//zmienna pomocnicza bedaca wynikiem tego czy dane maja zostac zdeszyfrowane
+unsigned int ifdecipher_udp;
+u16_t src_ip4_addr1;
+u16_t src_ip4_addr2;
+u16_t src_ip4_addr3;
+u16_t src_ip4_addr4;
+u16_t src_ip4_port;
+
+/*funkcja majaca na celu porownanie adresow IP zrodlowego i docelowego z tymi ktore maja byc poddane deszyfrowaniu/szyfrowaniu i
+ * odpowiednim skierowaniu danych do szyfrowania/desdzyfrowania
+ */
+void porownanie_adresow();
+
 
 #include "../lwip/opt.h"
 
@@ -132,6 +169,8 @@ void             udp_recv       (struct udp_pcb *pcb,
 err_t            udp_sendto_if  (struct udp_pcb *pcb, struct pbuf *p, struct ip_addr *dst_ip, u16_t dst_port, struct netif *netif);
 err_t            udp_sendto     (struct udp_pcb *pcb, struct pbuf *p, struct ip_addr *dst_ip, u16_t dst_port);
 err_t            udp_send       (struct udp_pcb *pcb, struct pbuf *p);
+
+u16_t udplen;
 
 #define          udp_flags(pcb)  ((pcb)->flags)
 #define          udp_setflags(pcb, f)  ((pcb)->flags = (f))

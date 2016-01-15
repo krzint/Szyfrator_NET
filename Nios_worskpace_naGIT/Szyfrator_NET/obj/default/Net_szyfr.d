@@ -35,10 +35,11 @@ obj/default/Net_szyfr.o: Net_szyfr.c \
  lwip/../lwip/../lwip/def.h lwip/../lwip/../lwip/pbuf.h \
  lwip/../lwip/../lwip/ip_addr.h lwip/../lwip/../lwip/netif.h \
  lwip/../lwip/icmp.h lwip/../arch/bpstruct.h lwip/../arch/epstruct.h \
- lwip/ip_frag.h lwip/../lwip/netif.h lwip/ip_addr.h netif/etharp.h \
- netif/../lwip/opt.h netif/../lwip/pbuf.h netif/../lwip/ip_addr.h \
- netif/../lwip/netif.h netif/../lwip/ip.h netif/../arch/bpstruct.h \
- netif/../arch/epstruct.h alteraTseEthernetif.h lwip/err.h
+ lwip/udp.h lwip/../Net_szyfr.h lwip/../lwip/netif.h lwip/ip_frag.h \
+ lwip/ip_addr.h netif/etharp.h netif/../lwip/opt.h netif/../lwip/pbuf.h \
+ netif/../lwip/ip_addr.h netif/../lwip/netif.h netif/../lwip/ip.h \
+ netif/../arch/bpstruct.h netif/../arch/epstruct.h alteraTseEthernetif.h \
+ lwip/err.h
 
 ../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/drivers/inc/altera_avalon_sgdma.h:
 
@@ -148,9 +149,13 @@ lwip/../arch/bpstruct.h:
 
 lwip/../arch/epstruct.h:
 
-lwip/ip_frag.h:
+lwip/udp.h:
+
+lwip/../Net_szyfr.h:
 
 lwip/../lwip/netif.h:
+
+lwip/ip_frag.h:
 
 lwip/ip_addr.h:
 

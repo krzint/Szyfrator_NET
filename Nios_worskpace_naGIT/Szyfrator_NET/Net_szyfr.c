@@ -25,6 +25,7 @@
 #include "lwip/netif.h"
 //#include "lwip/dhcp.h"TODO
 #include "lwip/tcp.h"
+#include "lwip/udp.h"
 //#include "lwip/stats.h"TODO
 #include "lwip/ip_frag.h"
 #include "lwip/ip_addr.h"
@@ -63,7 +64,7 @@ unsigned int text_length;
 unsigned int result1;
 unsigned int result2;
 // Ramka transmisyjna
-unsigned char tx_frame[1024];
+//unsigned char tx_frame[1024];
 /* = {
 		0x00,0x00,
 		0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
@@ -76,7 +77,7 @@ unsigned char tx_frame[1024];
 		0x6D,0x00,0xDE,0xFA,0x98,0x1E,'\0'
 };*/
 // Utworzenie ramek odbiorczych
-unsigned char rx_frame[1024] = { 0 };
+//unsigned char rx_frame[1024] = { 0 };
 unsigned char rx_frame1[1024] = { 0 };
 
 //TODO ramki testowe dla 3DES
@@ -180,7 +181,7 @@ typedef struct _lwip_tse_info
 
 //TODO zadeklarowac netif
 struct pbuf *p;
-struct netif TSE1netif;
+
 
 int main (int argc, char* argv[], char* envp[])
 {
@@ -324,8 +325,7 @@ printf("Rozpoczecie dzialania programu\n");
 	 * weryfikacja_szyfrowania ();
 	weryfikacja_deszyfrowania();
 	przygotowanie_danych();
-	test_wydajnosc ();
-	test_wydajnosci_sram();
+
 	*/
 	// adresy bazoweTriple-speed Ethernet MegaCore
 	volatile int * tse = (int *) ETH_TSE_BASE;
@@ -390,12 +390,18 @@ printf("Rozpoczecie dzialania programu\n");
 	 weryfikacja_szyfrowania ();
 	 //usleep(2500000);
 	 weryfikacja_deszyfrowania();
+	 /* TODO odkomentowac na sam koniec
+	 test_wydajnosc ();
+	test_wydajnosci_sram();
+	test_wydajnosci_3des_pot();
+*/
+	definicja_szyfrowania_UDP();
 	 //wyswietl_wyniki_sz_dsz();
 	 //wyswietl_wyniki_sz_dsz();
 	 //weryfikacja_szyfrowania ();
 
-	 weryfikacja_deszyfrowania ();
-	 weryfikacja_szyfrowania ();
+	// weryfikacja_deszyfrowania ();
+	// weryfikacja_szyfrowania ();
 	 //wyswietl_wyniki_sz_dsz();
 	//wyswietl_wyniki_sz_dsz();
 	/*while (1) {
@@ -480,7 +486,7 @@ void rx_ethernet_isr (void *context)
 {
 	int i;
 	//DLugosc pakietu
-	int pklen;
+
 	struct netif * netif = &TSE1netif;
 	lwip_tse_info* tse_ptr = (lwip_tse_info *) context;
 
@@ -554,6 +560,7 @@ void rx_ethernet_isr (void *context)
 		rx_frame[i]=0xFF;
 		i++;
 	}
+	//TODO ustawienie adresu MAC wychodzacego i przychodzacego mozna wylaczyc, ze wzgledu na uczynienie system "przezroczystym"
 	rx_frame[0]=0x00;
 	rx_frame[1]=0x00;
 	rx_frame[8]=0x01;
@@ -713,7 +720,7 @@ void weryfikacja_szyfrowania ()
 	init_3des_pot(0x01234567,0x89ABCDEF,0x23456789,0xABCDEF01,0x456789AB,0xCDEF0123);
 	ciph_3des(0x54686520,0x71756663); //wprowadzenie wektoru testowego
 
-	blok_testowy[0]=0x50;
+	blok_testowy[0]=0x54;
 	blok_testowy[1]=0x68;
 	blok_testowy[2]=0x65;
 	blok_testowy[3]=0x20;
@@ -722,23 +729,23 @@ void weryfikacja_szyfrowania ()
 	blok_testowy[6]=0x66;
 	blok_testowy[7]=0x63;
 
-	blok_testowy[8]=0x00;
-	blok_testowy[9]=0x68;
-	blok_testowy[10]=0x65;
-	blok_testowy[11]=0x20;
-	blok_testowy[12]=0x71;
-	blok_testowy[13]=0x75;
-	blok_testowy[14]=0x66;
-	blok_testowy[15]=0x63;
+	blok_testowy[8]=0x6B;
+	blok_testowy[9]=0x20;
+	blok_testowy[10]=0x62;
+	blok_testowy[11]=0x72;
+	blok_testowy[12]=0x6F;
+	blok_testowy[13]=0x77;
+	blok_testowy[14]=0x6E;
+	blok_testowy[15]=0x20;
 
-	blok_testowy[16]=0x54;
-	blok_testowy[17]=0x68;
-	blok_testowy[18]=0x65;
+	blok_testowy[16]=0x66;
+	blok_testowy[17]=0x6F;
+	blok_testowy[18]=0x78;
 	blok_testowy[19]=0x20;
-	blok_testowy[20]=0x71;
+	blok_testowy[20]=0x6A;
 	blok_testowy[21]=0x75;
-	blok_testowy[22]=0x66;
-	blok_testowy[23]=0x63;
+	blok_testowy[22]=0x6D;
+	blok_testowy[23]=0x70;
 
 	blok_testowy[24]=0x54;
 	blok_testowy[25]=0x68;
@@ -750,21 +757,22 @@ void weryfikacja_szyfrowania ()
 	blok_testowy[31]=0x63;
 
 
-	blok_testowy[32]=0x00;
-	blok_testowy[33]=0x68;
-	blok_testowy[34]=0x65;
-	blok_testowy[35]=0x20;
-	blok_testowy[36]=0x71;
-	blok_testowy[37]=0x75;
-	blok_testowy[38]=0x66;
-	blok_testowy[39]=0x63;
+	blok_testowy[32]=0x6B;
+	blok_testowy[33]=0x20;
+	blok_testowy[34]=0x62;
+	blok_testowy[35]=0x72;
+	blok_testowy[36]=0x6F;
+	blok_testowy[37]=0x77;
+	blok_testowy[38]=0x6E;
+	blok_testowy[39]=0x20;
 
 	printf("Wynikiem szyfrowania powinien byæ: 0xA826FD8CE53B855F \n");
 	ciph_3des_read(&result1,&result2);
 	printf("Wynik szyfrowania to: 0x%X%X \n",result1,result2);
-	printf("Adres blok_testowy: %i \n", &blok_testowy);
-	printf("Adres blok_wynikow: %i \n", &blok_wynikow);
-	printf("Wynik szyfrowania potokowego to:  \n");
+	//printf("Adres blok_testowy: %i \n", &blok_testowy);
+	//printf("Adres blok_wynikow: %i \n", &blok_wynikow);
+	printf("Wynikiem szyfrowania potokowego powinno byæ kolejno: 0xA826FD8CE53B855F , 0xCCE21C8112256FE6, 0x68D5C05DD9B6B900, 0xA826FD8CE53B855F , 0xCCE21C8112256FE6,\n");
+	//printf("Wynik szyfrowania potokowego to:  \n");
 
 		i=0;
 	ciph_3des_pot(&blok_testowy,&blok_wynikow,40);
@@ -777,7 +785,7 @@ void weryfikacja_szyfrowania ()
 	//ciph_3des_pot(&blok_testowy,&blok_wynikow,16);
 
 	printf("Wynik szyfrowania potokowego to:  \n");
-	while (i<96)
+	while (i<40)
 	{
 		if(blok_wynikow[i]>15)
 		{
@@ -803,6 +811,7 @@ void weryfikacja_szyfrowania ()
 		}
 		i++;
 	}
+	printf("\n");
 }
 /**
  * Funkcja weryfikujaca modul deszufrujacy Triple DES dla wektorow i kluczy podanych przez NIST
@@ -826,33 +835,51 @@ void weryfikacja_deszyfrowania ()
 	blok_testowy_deszyfracja[6]=0x85;
 	blok_testowy_deszyfracja[7]=0x5F;
 
-	blok_testowy_deszyfracja[8]=0x6D;
-	blok_testowy_deszyfracja[9]=0x0D;
-	blok_testowy_deszyfracja[10]=0x50;
-	blok_testowy_deszyfracja[11]=0xFE;
-	blok_testowy_deszyfracja[12]=0xF8;
-	blok_testowy_deszyfracja[13]=0xB5;
-	blok_testowy_deszyfracja[14]=0x83;
-	blok_testowy_deszyfracja[15]=0xE2;
+	blok_testowy_deszyfracja[8]=0xCC;
+	blok_testowy_deszyfracja[9]=0xE2;
+	blok_testowy_deszyfracja[10]=0x1C;
+	blok_testowy_deszyfracja[11]=0x81;
+	blok_testowy_deszyfracja[12]=0x12;
+	blok_testowy_deszyfracja[13]=0x25;
+	blok_testowy_deszyfracja[14]=0x6F;
+	blok_testowy_deszyfracja[15]=0xE6;
 
-	blok_testowy_deszyfracja[16]=0x5B;
-	blok_testowy_deszyfracja[17]=0x28;
-	blok_testowy_deszyfracja[18]=0xEC;
-	blok_testowy_deszyfracja[19]=0x13;
-	blok_testowy_deszyfracja[20]=0x98;
-	blok_testowy_deszyfracja[21]=0x5D;
-	blok_testowy_deszyfracja[22]=0xC3;
-	blok_testowy_deszyfracja[23]=0xFE;
+	blok_testowy_deszyfracja[16]=0x68;
+	blok_testowy_deszyfracja[17]=0xD5;
+	blok_testowy_deszyfracja[18]=0xC0;
+	blok_testowy_deszyfracja[19]=0x5D;
+	blok_testowy_deszyfracja[20]=0xD9;
+	blok_testowy_deszyfracja[21]=0xB6;
+	blok_testowy_deszyfracja[22]=0xB9;
+	blok_testowy_deszyfracja[23]=0x00;
+
+	blok_testowy_deszyfracja[24]=0x68;
+	blok_testowy_deszyfracja[25]=0xD5;
+	blok_testowy_deszyfracja[26]=0xC0;
+	blok_testowy_deszyfracja[27]=0x5D;
+	blok_testowy_deszyfracja[28]=0xD9;
+	blok_testowy_deszyfracja[29]=0xB6;
+	blok_testowy_deszyfracja[30]=0xB9;
+	blok_testowy_deszyfracja[31]=0x00;
+
+	blok_testowy_deszyfracja[32]=0xA8;
+	blok_testowy_deszyfracja[33]=0x26;
+	blok_testowy_deszyfracja[34]=0xFD;
+	blok_testowy_deszyfracja[35]=0x8C;
+	blok_testowy_deszyfracja[36]=0xE5;
+	blok_testowy_deszyfracja[37]=0x3B;
+	blok_testowy_deszyfracja[38]=0x85;
+	blok_testowy_deszyfracja[39]=0x5F;
 	//printf("Adres blok_testowy_deszyfracja: %x \n",&blok_testowy_deszyfracja);
 	//printf("Adres blok_wynikow_deszyfracja: %x \n",&blok_wynikow_deszyfracja);
 
 	//deciph_3des_pot(&blok_testowy_deszyfracja,&blok_wynikow_deszyfracja,40);
 	deciph_3des_pot(&blok_testowy_deszyfracja,&blok_wynikow_deszyfracja,40);
 	//deciph_3des_pot(&blok_testowy_deszyfracja,&blok_wynikow_deszyfracja,24);
-
+	printf("Wynikiem deszyfrowania potokowego powinno byæ kolejno: 0x5468652071756663, 0x6B2062726F776E20, 0x666F78206A756D70, 0x666F78206A756D70, 0x5468652071756663\n");
 	printf("Wynik deszyfrowania potokowego to:  ");
 	int i=0;
-		while (i<64)
+		while (i<40)
 		{
 			if(blok_wynikow_deszyfracja[i]>15)
 			{
@@ -878,6 +905,7 @@ void weryfikacja_deszyfrowania ()
 			}
 			i++;
 		}
+		printf("\n");
 }
 /**
  * Funkcja testujaca wydajnosc modulow Triple DES przy wykorzystaniu zapisu i odczytu danych na On-Chip Memory
@@ -950,7 +978,7 @@ void paczka_deszyfrowanie()
 void przygotowanie_danych()
 {
 	int k=0;
-	int sram_adres=0x90000;
+	int sram_adres=0x200000;
 	int j = 0;
 	for (j=0 ; j<1024; j++)
 	{
@@ -982,19 +1010,19 @@ void przygotowanie_danych()
  * Przeprowadzenie szyfrowania 1MB danych w pamieci SRAM oraz zapisanie ich
  */
 void przeprowadzenie_szyfrowania_sram()
-{	printf("Rozpoczêcie testów szyfrowania z zapisem do SRAM \n");
+{	printf("Rozpoczêcie testów szyfrowania 1MB danych metoda iteracyjna \n");
 	int k=0;
-	int sram_adres_read=0x90000; //adres do odczytu
+	int sram_adres_read=0x200000; //adres do odczytu
 	int sram_adres_write=sram_adres_read+1048576; //adres do zapisu
 
-	while(k<2)
+	while(k<256)
 	{
 	/*alt_avalon_sgdma_construct_mem_to_mem_desc(&read_descriptor,&read_descriptor_end,(alt_u32 *) sram_adres_read,(alt_u32*)*dane,(alt_u16)4096,0,0);
 	alt_avalon_sgdma_do_async_transfer( sgdma_read_3des, &read_descriptor );
 	while (alt_avalon_sgdma_check_descriptor_status(&read_descriptor) != 0);
-
+	*/
 	paczka_szyfrowanie();
-	alt_avalon_sgdma_construct_mem_to_mem_desc(&read_descriptor,&read_descriptor_end,(alt_u32 *) *wyniki,(alt_u32*)sram_adres_write,(alt_u16)4096,0,0);
+	/*alt_avalon_sgdma_construct_mem_to_mem_desc(&read_descriptor,&read_descriptor_end,(alt_u32 *) *wyniki,(alt_u32*)sram_adres_write,(alt_u16)4096,0,0);
 	alt_avalon_sgdma_do_async_transfer( sgdma_read_3des, &read_descriptor );
 	while (alt_avalon_sgdma_check_descriptor_status(&read_descriptor) != 0);*/
 	sram_adres_read+=4096;
@@ -1007,9 +1035,9 @@ void przeprowadzenie_szyfrowania_sram()
  * Przeprowadzenie deszyfrowania 1MB danych w pamieci SRAM oraz zapisanie ich
  */
 void przeprowadzenie_deszyfrowania_sram()
-{
+{	printf("Rozpoczêcie testów deszyfrowania 1MB danych metoda iteracyjna\n");
 	int k=0;
-	int sram_adres_read=0x90000; //adres do odczytu
+	int sram_adres_read=0x200000; //adres do odczytu
 	int sram_adres_write=sram_adres_read+1048576; //adres do zapisu
 
 	while(k<256)
@@ -1017,9 +1045,9 @@ void przeprowadzenie_deszyfrowania_sram()
 	/*alt_avalon_sgdma_construct_mem_to_mem_desc(&read_descriptor,&read_descriptor_end,(alt_u32 *) sram_adres_read,(alt_u32*)*dane,(alt_u16)4096,0,0);
 	alt_avalon_sgdma_do_async_transfer( sgdma_read_3des, &read_descriptor );
 	while (alt_avalon_sgdma_check_descriptor_status(&read_descriptor) != 0);
-
+	*/
 	paczka_deszyfrowanie();
-	alt_avalon_sgdma_construct_mem_to_mem_desc(&read_descriptor,&read_descriptor_end,(alt_u32 *) *wyniki,(alt_u32*)sram_adres_write,(alt_u16)4096,0,0);
+	/*alt_avalon_sgdma_construct_mem_to_mem_desc(&read_descriptor,&read_descriptor_end,(alt_u32 *) *wyniki,(alt_u32*)sram_adres_write,(alt_u16)4096,0,0);
 	alt_avalon_sgdma_do_async_transfer( sgdma_read_3des, &read_descriptor );
 	while (alt_avalon_sgdma_check_descriptor_status(&read_descriptor) != 0);*/
 	sram_adres_read+=4096;
@@ -1041,7 +1069,7 @@ void test_wydajnosci_sram()
 	PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE ,2); // uruchomienie 2 licznika
 	przeprowadzenie_deszyfrowania_sram();
 	PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE); //wylaczenie wszystkich licznikow
-	perf_print_formatted_report((void* )PERFORMANCE_COUNTER_0_BASE,	ALT_CPU_FREQ*2,2,"Test szyfr 3DES(SRAM)","Test deszyfr 3DES(SRAM)");
+	perf_print_formatted_report((void* )PERFORMANCE_COUNTER_0_BASE,	ALT_CPU_FREQ*2,2,"Test szyfr 3DES(1MB)","Test deszyfr 3DES(1MB)");
 }
 /*
  *Funkcja do wprowadzenia przez uzytkownika kluczy szyfratora i deszyfratora Triple DES
@@ -1102,28 +1130,28 @@ void init_3des_decrypt_pot (unsigned int key11,unsigned int key12,unsigned int k
 
 	IOWR_32DIRECT (A_3DESDECRYPT_POT_0_BASE,0x00000004,key12); //wprowadzenie drugiej polowy klucza 1
 	unsigned int iserted_key12 = IORD_32DIRECT(A_3DESDECRYPT_POT_0_BASE,0x00000020);
-	printf("Klucz pierwszy: 0x%x%x \n",iserted_key11,iserted_key12);
+	//printf("Klucz pierwszy: 0x%x%x \n",iserted_key11,iserted_key12);
 
 	IOWR_32DIRECT (A_3DESDECRYPT_POT_0_BASE,0x00000008,key21);//wprowadzenie pierwszej polowy klucza 2
 	unsigned int iserted_key21 = IORD_32DIRECT(A_3DESDECRYPT_POT_0_BASE,0x00000024);
 
 	IOWR_32DIRECT(A_3DESDECRYPT_POT_0_BASE,0x0000000C,key22); //wprowadzenie drugiej polowy klucza 2
 	unsigned int iserted_key22 = IORD_32DIRECT(A_3DESDECRYPT_POT_0_BASE,0x00000028);
-	printf("Klucz drugi: 0x%x%x \n",iserted_key21,iserted_key22);
+	//printf("Klucz drugi: 0x%x%x \n",iserted_key21,iserted_key22);
 
 	IOWR_32DIRECT ( A_3DESDECRYPT_POT_0_BASE,0x00000010,key31);//wprowadzenie pierwszej polowy klucza 3
 	unsigned int iserted_key31 = IORD_32DIRECT(A_3DESDECRYPT_POT_0_BASE,0x0000002C);
 
 	IOWR_32DIRECT(A_3DESDECRYPT_POT_0_BASE,0x000000014,key32); //wprowadzenie drugiej polowy klucza 3
 	unsigned int iserted_key32 = IORD_32DIRECT(A_3DESDECRYPT_POT_0_BASE,0x00000030);
-	printf("Klucz trzeci: 0x%x%x \n",iserted_key31,iserted_key32);
+	//printf("Klucz trzeci: 0x%x%x \n",iserted_key31,iserted_key32);
 }
 /**
  * Funkcja realizujaca szyfrowanie z uzyciem modulu potowej wersji Triple DES
  */
 void ciph_3des_pot ( unsigned char *data, unsigned char *ciph_data, unsigned int length)
 {
-		alt_avalon_sgdma_construct_stream_to_mem_desc( &tdesout_descriptor, &tdesout_descriptor_end, ciph_data, 0, 0 );
+		/*alt_avalon_sgdma_construct_stream_to_mem_desc( &tdesout_descriptor, &tdesout_descriptor_end, ciph_data, 0, 0 );
 		//printf("tdesout_descriptor: %i \n",tdesout_descriptor);
 		//printf("Adres blok blok_wynikow: %i \n",&blok_wynikow );
 		 if(alt_avalon_sgdma_do_async_transfer( sgdma_out_dev, &tdesout_descriptor ) != 0)
@@ -1131,8 +1159,9 @@ void ciph_3des_pot ( unsigned char *data, unsigned char *ciph_data, unsigned int
 			printf("Zapis od szyfratora 3DES do pamieci sie nie powiodl\n");
 
 		  }
-
-	int i=0;
+*/
+	//int i=0;
+	/*
 	printf("ciph_3des_pot, DANE DO ZASZYFROWANIA: \n");
 	while(i<length)
 		{
@@ -1162,29 +1191,31 @@ void ciph_3des_pot ( unsigned char *data, unsigned char *ciph_data, unsigned int
 
 			i++;
 		}
+	*/
 	//printf("ciph_3des_pot: 1 data: %x \n",&data);
 	//while (alt_avalon_sgdma_check_descriptor_status(&tdesdecryptout_descriptor) != 0);
 	//while (alt_avalon_sgdma_check_descriptor_status(&tdesdecryptin_descriptor) != 0);
-	alt_avalon_sgdma_construct_mem_to_stream_desc( &tdesin_descriptor, &tdesin_descriptor_end, data, length+64, 0, 1, 1, 0 );
-	printf("length: %i \n",length);
-	printf("tdesin_descriptor: %i \n",tdesin_descriptor);
-	printf("Adres blok testowy: %i \n",data);
+	//data+=4;
+	alt_avalon_sgdma_construct_mem_to_stream_desc( &tdesin_descriptor, &tdesin_descriptor_end, (alt_u32 *)data, length, 0, 1, 1, 0 );
+	//printf("length: %i \n",length);
+	//printf("tdesin_descriptor: %i \n",tdesin_descriptor);
+	//printf("Adres blok testowy: %i \n",data);
 	//printf("Adres blok testowy: %i \n",&blok_testowy);
-	printf("Adres blok wynikow: %i \n",ciph_data);
-	printf("tdesin_descriptor_end: %i \n",tdesin_descriptor_end);
+	//printf("Adres blok wynikow: %i \n",ciph_data);
+	//printf("tdesin_descriptor_end: %i \n",tdesin_descriptor_end);
+	//alt_avalon_sgdma_do_async_transfer( sgdma_in_dev, &tdesin_descriptor ) ;
 
+	while(alt_avalon_sgdma_do_async_transfer( sgdma_in_dev, &tdesin_descriptor ) != 0)
+	{
+		printf("Zapis do szyfratora 3DES sie nie powiodl\n");
 
-	  if(alt_avalon_sgdma_do_async_transfer( sgdma_in_dev, &tdesin_descriptor ) != 0)
-	  {
-	    printf("Zapis do szyfratora 3DES sie nie powiodl\n");
-
-	  }
+	}
 
 	//while (alt_avalon_sgdma_check_descriptor_status(&tdesin_descriptor) != 0);
 	//ff_tx_eop=1;
 	//while (alt_avalon_sgdma_check_descriptor_status(&tdesin_descriptor) != 0)
 	//	;
-	printf("ciph_3des_pot: 2 \n");
+	//printf("ciph_3des_pot: 2 \n");
 
 	//printf("ciph_3des_pot: 3 , ciph_data: %x \n",&ciph_data);
 	//while (alt_avalon_sgdma_check_descriptor_status(&tdesout_descriptor) != 0)
@@ -1192,17 +1223,24 @@ void ciph_3des_pot ( unsigned char *data, unsigned char *ciph_data, unsigned int
 	//printf("tdesout_descriptor: %X \n",&tdesout_descriptor);
 
 
-	alt_avalon_sgdma_construct_stream_to_mem_desc( &tdesout_descriptor, &tdesout_descriptor_end, ciph_data, 0, 0 );
+	alt_avalon_sgdma_construct_stream_to_mem_desc( &tdesout_descriptor, &tdesout_descriptor_end, (alt_u32 *)ciph_data, 0, 0 );
+	//alt_avalon_sgdma_do_async_transfer( sgdma_out_dev, &tdesout_descriptor );
+	while((alt_avalon_sgdma_do_async_transfer( sgdma_out_dev, &tdesout_descriptor ) != 0))
+	{
+
+	}
+
 	//printf("tdesout_descriptor: %i \n",tdesout_descriptor);
 	//printf("Adres blok blok_wynikow: %i \n",&blok_wynikow );
-	 if(alt_avalon_sgdma_do_async_transfer( sgdma_out_dev, &tdesout_descriptor ) != 0)
+	/* if(alt_avalon_sgdma_do_async_transfer( sgdma_out_dev, &tdesout_descriptor ) != 0)
 	  {
 		printf("Zapis od szyfratora 3DES do pamieci sie nie powiodl\n");
 
 	  }
-
+	// while (alt_avalon_sgdma_check_descriptor_status(&tdesout_descriptor) != 0)
+	// 						;
 	 i=0;
-	 	printf("ciph_3des_pot, DANE PO ZASZYFROWANIA: \n");
+	 /*	printf("ciph_3des_pot, DANE PO ZASZYFROWANIU: \n");
 	 	while(i<length)
 	 		{
 
@@ -1230,7 +1268,7 @@ void ciph_3des_pot ( unsigned char *data, unsigned char *ciph_data, unsigned int
 	 					}
 
 	 			i++;
-	 		}
+	 		}*/
 }
 
 /**
@@ -1241,9 +1279,9 @@ void deciph_3des_pot ( unsigned char *data, unsigned char *deciph_data, unsigned
 	//while (alt_avalon_sgdma_check_descriptor_status(&tdesdecryptout_descriptor) != 0);
 
 	alt_avalon_sgdma_construct_mem_to_stream_desc( &tdesdecryptin_descriptor, &tdesdecryptin_descriptor_end, (alt_u32 *)data, length, 0, 1, 1, 0 );
-
-	alt_avalon_sgdma_do_async_transfer( sgdma_in_decrypt_dev, &tdesdecryptin_descriptor );
-	printf("deciph_3des_pot: 1 \n");
+	//alt_avalon_sgdma_do_async_transfer( sgdma_in_decrypt_dev, &tdesdecryptin_descriptor );
+	while(alt_avalon_sgdma_do_async_transfer( sgdma_in_decrypt_dev, &tdesdecryptin_descriptor ) != 0) ;
+	//printf("deciph_3des_pot: 1 \n");
 	//while (alt_avalon_sgdma_check_descriptor_status(&tdesdecryptin_descriptor) != 0);
 	//ff_tx_eop=1;
 	//while (alt_avalon_sgdma_check_descriptor_status(&tdesin_descriptor) != 0)
@@ -1253,7 +1291,8 @@ void deciph_3des_pot ( unsigned char *data, unsigned char *deciph_data, unsigned
 	//			;
 	//printf("deciph_3des_pot: 3 \n");
 	alt_avalon_sgdma_construct_stream_to_mem_desc( &tdesdecryptout_descriptor, &tdesdecryptout_descriptor_end, (alt_u32 *) deciph_data, 0, 0 );
-	alt_avalon_sgdma_do_async_transfer( sgdma_out_decrypt_dev, &tdesdecryptout_descriptor );
+	//alt_avalon_sgdma_do_async_transfer( sgdma_out_decrypt_dev, &tdesdecryptout_descriptor );
+	while(alt_avalon_sgdma_do_async_transfer( sgdma_out_decrypt_dev, &tdesdecryptout_descriptor ) != 0) ;
 
 
 
@@ -1287,6 +1326,36 @@ void tdes_decryptpot_isr (void *context)
 	alt_avalon_sgdma_do_async_transfer( sgdma_out_decrypt_dev, &tdesdecryptout_descriptor );
 */
 }
+/*
+ * Funkcja przeprowadzajaca pomiary szyfrowania 1 MB danych
+ */
+void test_wydajnosci_3des_pot()
+{
+	printf("Test wydajnosci potokowej realizacji szyfratora i deszyfratora Triple DES \n");
+	PERF_RESET(PERFORMANCE_COUNTER_0_BASE );
+	PERF_START_MEASURING(PERFORMANCE_COUNTER_0_BASE);
+	int i=0;
+	int j=0;
+	PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE ,2); //rozpoczecie pracy 2 licznika mierzacego takty zegara
+	while(i<512)
+	{
+		ciph_3des_pot(&blok_testowy+2048*i,&blok_testowy+1048576+2048*i,2048);
+
+
+		i++;
+	}
+	PERF_END(PERFORMANCE_COUNTER_0_BASE ,2); //zakonczenie pracy 2 licznika mierzacego takty zegara
+	i=0;
+	PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE ,1);//rozpoczecie pracy 1 licznika mierzacego takty zegara
+	while(i<512)
+	 {
+		deciph_3des_pot(&blok_testowy+2048*i,&blok_testowy+1048576+2048*i,2048);
+		i++;
+	 }
+	PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE); //zakonczenie pracy wszystkich licznikow
+	perf_print_formatted_report((void* )PERFORMANCE_COUNTER_0_BASE,	ALT_CPU_FREQ*2,2,"3Des_pot 1MB szyfr","3Des_pot 1MB deszyfr"); //generacja raportu
+
+}
 
 void wyswietl_wyniki_sz_dsz()
 {	int i = 0;
@@ -1317,6 +1386,20 @@ void wyswietl_wyniki_sz_dsz()
 			}
 			i++;
 		}
+}
+void definicja_szyfrowania_UDP()
+{
+	 ciph_ip4_addr1=192;
+	 ciph_ip4_addr2=168;
+	 ciph_ip4_addr3=0;
+	 ciph_ip4_addr4=7;
+	 ciph_ip4_port=0;
+
+	 deciph_ip4_addr1=192;
+	 deciph_ip4_addr2=168;
+	 deciph_ip4_addr3=0;
+	 deciph_ip4_addr4=5;
+	 deciph_ip4_port=0;
 }
 struct netif* inicjalizacja_netif (struct netif *netif)
 {

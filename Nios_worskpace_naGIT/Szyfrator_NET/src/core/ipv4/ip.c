@@ -93,7 +93,7 @@ ip_route(struct ip_addr *dest)
       }
     }
   }
-  if ((netif_default == NULL) || (!netif_is_up(netif_default))) {
+ /*TODO zakomentowalem if ((netif_default == NULL) || (!netif_is_up(netif_default))) {
     LWIP_DEBUGF(IP_DEBUG | LWIP_DBG_LEVEL_SERIOUS, ("ip_route: No route to 0x%"X32_F"\n", dest->addr));
     IP_STATS_INC(ip.rterr);
     snmp_inc_ipoutnoroutes();
@@ -234,10 +234,13 @@ ip_input(struct pbuf *p, struct netif *inp)
   iphdr_hlen = IPH_HL(iphdr);
   printf("iphdr_hlen: 0x%x\n",iphdr_hlen);
   /* calculate IP header length in bytes */
+
   iphdr_hlen *= 4;
+  ip_header_len=iphdr_hlen;
   printf("iphdr_hlen: 0x%x\n",iphdr_hlen);
   /* obtain ip length in bytes */
   iphdr_len = ntohs(IPH_LEN(iphdr));
+  total_ip_len=iphdr_len;
   printf("iphdr_len: 0x%x\n",iphdr_len);
   /* header length exceeds first pbuf length, or ip length exceeds total pbuf length? */
   if ((iphdr_hlen > p->len) || (iphdr_len > p->tot_len)) {

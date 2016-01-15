@@ -85,6 +85,10 @@ extern "C" {
   /* link layer address resolution hint */ \
   IP_PCB_ADDRHINT
 
+//Calkowita dlugosc pakietu IP
+u16_t total_ip_len;
+//Dlugosc naglowka IP w bajtach
+u16_t ip_header_len;
 struct ip_pcb {
 /* Common members of all PCB types */
   IP_PCB;
