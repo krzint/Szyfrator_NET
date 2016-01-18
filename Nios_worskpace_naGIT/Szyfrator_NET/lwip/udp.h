@@ -45,12 +45,14 @@ u16_t ciph_ip4_addr4;
 u16_t ciph_ip4_port;
 //zmienna pomocnicza bedaca wynikiem tego czy dane maja zostac zaszyfrowane
 unsigned int ifcipher_udp;
+struct ip_addr dst_ip4;
 u16_t dest_ip4_addr1;
 u16_t dest_ip4_addr2;
 u16_t dest_ip4_addr3;
 u16_t dest_ip4_addr4;
 u16_t dest_ip4_port;
 
+//TODO jesli bedzie warto u16_t wyliczenie_udp_checksum();
 
 // Ÿród³owy adres IP poddawany deszyfrowaniu danych UDP
 u16_t deciph_ip4_addr1;
@@ -60,6 +62,7 @@ u16_t deciph_ip4_addr4;
 u16_t deciph_ip4_port;
 //zmienna pomocnicza bedaca wynikiem tego czy dane maja zostac zdeszyfrowane
 unsigned int ifdecipher_udp;
+struct ip_addr src_ip4;
 u16_t src_ip4_addr1;
 u16_t src_ip4_addr2;
 u16_t src_ip4_addr3;

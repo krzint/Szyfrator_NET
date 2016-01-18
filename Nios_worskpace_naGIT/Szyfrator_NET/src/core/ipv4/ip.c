@@ -254,7 +254,8 @@ ip_input(struct pbuf *p, struct netif *inp)
         ("IP (len %"U16_F") is longer than pbuf (len %"U16_F"), IP packet dropped.\n",
         iphdr_len, p->tot_len));
     }
-    /* free (drop) packet pbufs */
+    /* free (drop) packet pbufs TODO*/
+    printf("(iphdr_hlen > p->len) || (iphdr_len > p->tot_len)\n");
     pbuf_free(p);
     IP_STATS_INC(ip.lenerr);
     IP_STATS_INC(ip.drop);
@@ -265,7 +266,7 @@ ip_input(struct pbuf *p, struct netif *inp)
   /* verify checksum */
 #if CHECKSUM_CHECK_IP
   if (inet_chksum(iphdr, iphdr_hlen) != 0) {
-
+	  printf("inet_chksum(iphdr, iphdr_hlen) != 0");
     LWIP_DEBUGF(IP_DEBUG | LWIP_DBG_LEVEL_SERIOUS,
       ("Checksum (0x%"X16_F") failed, IP packet dropped.\n", inet_chksum(iphdr, iphdr_hlen)));
     ip_debug_print(p);

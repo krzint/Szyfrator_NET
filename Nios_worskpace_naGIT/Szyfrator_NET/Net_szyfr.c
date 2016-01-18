@@ -351,39 +351,47 @@ printf("Rozpoczecie dzialania programu\n");
 // Okreslenie adresow urzadzen PHY do ktorych dostep odbywac sie bedzie przez interfejs MDIO
 	 *(tse + 0x0F) = 0x10;
 	*(tse + 0x10) = 0x11;
-	// Okreslenie adresow urzadzen PHY do ktorych dostep odbywac sie bedzie przez interfejs MDIO
-	/// *(tse1 + 0x0F) = 0x10;
-	/// *(tse1 + 0x10) = 0x11;
+	//Okreslenie adresow urzadzen PHY do ktorych dostep odbywac sie bedzie przez interfejs MDIO
+	 *(tse1 + 0x0F) = 0x10;
+	 *(tse1 + 0x10) = 0x11;
 	 // Write to register 20 of the PHY chip for Ethernet port 0 to set up line loopback
 	 //*(tse + 0x94 ) = 0x4000;
 	 // Ustawienie crossoveru dla obu PHY
 	// *(tse + 0xA0) = *(tse + 0xA0) | 0x0060;
 	/// *(tse1 + 0xB0) = *(tse1 + 0xB0) | 0x0060;
-	*(tse + 0x94) = 0x4000;
+	 *(tse + 0x94) = 0x4000;
+	 *(tse1 + 0x94) = 0x4000;
 
 
 	 //Uruchomienie crosoveru dla PHY
 	  *(tse + 0x90) = *(tse + 0x90) | 0x0060;
+	 // *(tse1 + 0x90) = *(tse1 + 0x90) | 0x0060;
 		//  *(tse1 + 0xB0) = *(tse1 + 0xB0) | 0x0060;
 		 // Wprowadzenie opoznienia zegara wejsciowego i wyjsciowego
 
 		///	 *(tse1 + 0xB4) = *(tse1 + 0xB4) | 0x0082;
 	  *(tse + 0x94) = *(tse + 0x94) | 0x0082;
-
+	  *(tse1 + 0x94) = *(tse1 + 0x94) | 0x0082;
 	 // *(tse + 2) = *(tse + 2) | 0x02000043;
 	  // Software reset obu chipow PHY
 	  *(tse + 0x80) = *(tse + 0x80) | 0x8000;
 		while ( *(tse + 0x80) & 0x8000  )
 			;
+	//*(tse1 + 0x80) = *(tse1 + 0x80) | 0x8000;
+	//			while ( *(tse1 + 0x80) & 0x8000  )
+		//			;
 			// *(tse + 0x02) = *(tse + 0x02) | 0x2000;
 		//	 while ( *(tse + 0x02) & 0x2000  ) ; //sprawdzenie czy reset sie zakonczyl (sw_reset=0)
-///	 		 *(tse1 + 0xA0) = *(tse1 + 0xA0) | 0x8000;
-///	 		while ( *(tse1 + 0xA0) & 0x8000  ) 			 ;
+		 *(tse1 + 0x02) = *(tse1 + 0x02) | 0x2000;
+			 while ( *(tse1 + 0x02) & 0x2000  ) ; //sprawdzenie czy reset sie zakonczyl (sw_reset=0)
+	 		 *(tse1 + 0xA0) = *(tse1 + 0xA0) | 0x8000;
+ 		while ( *(tse1 + 0xA0) & 0x8000  ) 			 ;
 	 // Umozliwienie zapisu i odczytu oraz przesylania ramek z blednie wyliczonym CRC
 		printf("Udany reset obu modulow");
 ///		 *(tse1 + 2) = *(tse1 + 2) | 0x02000043;
 	// *(tse + 2 ) = *(tse + 2) | 0x0000004B;
 	 *(tse + 2) = *(tse + 2) |0x040001F3;
+	 *(tse1 + 2) = *(tse1 + 2) |0x040001F3;
 	 alt_printf( "send> \n" );
 	 text_length = 0;
 	// wprowadzenie_kluczy(); //Wprowadzenie wartosci kluczy ktore mialy byc uzywane przy transmisji Ethernet
@@ -506,9 +514,9 @@ void rx_ethernet_isr (void *context)
 	i=0;
 	// Set up non-blocking transfer of sgdma receive descriptor
 
-	int speed=alt_tse_mac_get_common_speed( ETH_TSE_BASE);
-	printf("Currents speed:  %i",speed);
-	printf("\n");
+	//int speed=alt_tse_mac_get_common_speed( ETH_TSE_BASE);
+	//printf("Currents speed:  %i",speed);
+	//printf("\n");
 	//unsigned int *readtse;
 	//*readtse=
 	//volatile int * tse = (int *) ETH_TSE_BASE;
@@ -518,7 +526,7 @@ void rx_ethernet_isr (void *context)
 	printf("\n");
 			printf("odebrano ramke \n");
 			//TODO usunac dla poprawienia wydajnosci
-	while(i<pklen)
+	/*while(i<pklen)
 	 {
 				alt_printf( "%x", rx_frame[i] );
 				i++;// 0x1024008 --> backspaces
@@ -526,9 +534,9 @@ void rx_ethernet_isr (void *context)
 				{
 					i=1024;
 				}
-			}
-
-	p->payload=rx_frame;
+			}*/
+	memcpy(tx_frame,rx_frame,pklen);
+	p->payload=tx_frame;
 	//TODO ogarnac to: ethernet_input
 	ethernet_input(p,netif);
 
@@ -555,7 +563,7 @@ void rx_ethernet_isr (void *context)
 		tx_frame[11]=0x11;
 		tx_frame[12]=0x02;
 		tx_frame[13]=0x0F;*/
-	while (i<8)
+/*	while (i<8)
 	{
 		rx_frame[i]=0xFF;
 		i++;
@@ -568,8 +576,8 @@ void rx_ethernet_isr (void *context)
 	rx_frame[10]=0x6E;
 	rx_frame[11]=0x11;
 	rx_frame[12]=0x02;
-	rx_frame[13]=0x0F;
-	memcpy(tx_frame,rx_frame,pklen);//Poprawic wartosc pklen na inna
+	rx_frame[13]=0x0F;*/
+	//Poprawic wartosc pklen na inna
 	//tx_frame[12]=0x08;
 	//tx_frame[13]=0x00;
 	i=14;
@@ -581,10 +589,11 @@ void rx_ethernet_isr (void *context)
 	}*/
 
 	//tx_frame[88]='\0';
-	//TODO uaktualnic wartosc pklen
-	alt_avalon_sgdma_construct_mem_to_stream_desc( &tx_descriptor, &tx_descriptor_end, (alt_u32 *)tx_frame, pklen-4, 0, 1, 1, 0 );
-	alt_avalon_sgdma_do_async_transfer( sgdma_tx_dev, &tx_descriptor );
-	while (alt_avalon_sgdma_check_descriptor_status(&tx_descriptor) != 0);
+	//TODO uaktualnic wartosc pklen UAKTUALNIONA JEST W INNYM MIEJSCU
+	alt_avalon_sgdma_construct_mem_to_stream_desc( &tx_descriptor1, &tx_descriptor_end1, (alt_u32 *)tx_frame, pklen-4, 0, 1, 1, 0 );
+	alt_avalon_sgdma_do_async_transfer( sgdma_tx_dev, &tx_descriptor1 );
+	while (alt_avalon_sgdma_check_descriptor_status(&tx_descriptor1) != 0);
+
 	//ff_tx_eop=1;
 	alt_avalon_sgdma_construct_stream_to_mem_desc( &rx_descriptor, &rx_descriptor_end, (alt_u32 *)rx_frame, 0, 0 );
 
@@ -592,7 +601,8 @@ void rx_ethernet_isr (void *context)
 
 
 	//alt_avalon_sgdma_do_async_transfer( sgdma_rx_dev, &rx_descriptor );
-
+	p->len=0;
+	p->tot_len=0;
 	printf("\n");
 			printf("zakonczono odbior ramki\n");
 
@@ -602,14 +612,22 @@ void rx_ethernet_isr (void *context)
 
 void rx_ethernet_isr1 (void *context)
 {
-	int i;
-
+		int i;
+		struct netif * netif = &TSE1netif;
 		// Wait until receive descriptor transfer is complete
 		while (alt_avalon_sgdma_check_descriptor_status(&rx_descriptor1) != 0)
 			;
+		printf( "Drugie zlacze odebralo ramke \n" );
+		pklen = IORD_16DIRECT(&(rx_descriptor1.actual_bytes_transferred),0);
+		printf("dlugosc odebranych danych to: %d",pklen);
+		memcpy(tx_frame,rx_frame1,pklen);
+		p->payload=tx_frame;
+
+		//TODO ogarnac to: ethernet_input
+		ethernet_input(p,netif);
 
 		// Clear input line before writing
-		for (i = 0; i < (6 + text_length); i++) {
+	/*	for (i = 0; i < (6 + text_length); i++) {
 			alt_printf( "%c", 0x08 );		 // 0x1024008 --> backspace
 		}
 
@@ -618,18 +636,24 @@ void rx_ethernet_isr1 (void *context)
 		i=0;
 		while(rx_frame1[i] != NULL)
 		 {
-					alt_printf( "%c", rx_frame1[i] );
+					printf( "%c", rx_frame1[i] );
 					i++;// 0x1024008 --> backspace
 				}
+				*/
 		// Reprint current input line after the output
 		//alt_printf( "send> %s", tx_frame + 16 );
 
 		// Create new receive sgdma descriptor
+		alt_avalon_sgdma_construct_mem_to_stream_desc( &tx_descriptor, &tx_descriptor_end, (alt_u32 *)tx_frame, pklen-4, 0, 1, 1, 0 );
+		alt_avalon_sgdma_do_async_transfer( sgdma_tx_dev, &tx_descriptor );
+		while (alt_avalon_sgdma_check_descriptor_status(&tx_descriptor) != 0);
+
 		alt_avalon_sgdma_construct_stream_to_mem_desc( &rx_descriptor1, &rx_descriptor_end1, (alt_u32 *)rx_frame1, 0, 0 );
 
 		// Set up non-blocking transfer of sgdma receive descriptor
 		alt_avalon_sgdma_do_async_transfer( sgdma_rx_dev1, &rx_descriptor1 );
-
+		p->len=0;
+		p->tot_len=0;
 
 
 }

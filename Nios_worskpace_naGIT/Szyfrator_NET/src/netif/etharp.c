@@ -1147,7 +1147,7 @@ etharp_request(struct netif *netif, struct ip_addr *ipaddr)
 err_t
 ethernet_input(struct pbuf *p, struct netif *netif)
 {
-	printf("ethernet_input \n");
+	printf("\n ethernet_input \n");
   struct eth_hdr* ethhdr;
   u16_t type;
 
@@ -1184,7 +1184,7 @@ ethernet_input(struct pbuf *p, struct netif *netif)
 #if ETHARP_TRUST_IP_MAC
       /* update ARP table */
       //TODO
-    	etharp_ip_input(netif, p);
+    //	etharp_ip_input(netif, p);
 #endif /* ETHARP_TRUST_IP_MAC */
       /* skip Ethernet header */
     	//TODO oryginal:if(pbuf_header(p, -(s16_t)SIZEOF_ETH_HDR)) {
