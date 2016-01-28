@@ -157,12 +157,7 @@ unsigned int key11=0x01234567,  key12=0x89ABCDEF,  key21=0xFEDCAB89,  key22=0x76
 
 //  Zdefiniowanie netif dla lwIP
 //struct netif    alteraTseNetif;
-
-
-
-
-
-/* Base-Structure for all lwIP TSE information */
+/* Base-Structure for all lwIP TSE information TODO do usuniecia */
 typedef struct _lwip_tse_info
 {
    tse_mac_trans_info mi; /* MAC base driver data. */
@@ -177,6 +172,11 @@ typedef struct _lwip_tse_info
    alt_tse_system_info *tse;
 
 } lwip_tse_info;
+
+
+
+
+
 
 
 //TODO zadeklarowac netif
@@ -403,7 +403,7 @@ printf("Rozpoczecie dzialania programu\n");
 	test_wydajnosci_sram();
 	test_wydajnosci_3des_pot();
 */
-	definicja_szyfrowania_UDP();
+	wprowadzenie_adresow_ip_do_3des();
 	 //wyswietl_wyniki_sz_dsz();
 	 //wyswietl_wyniki_sz_dsz();
 	 //weryfikacja_szyfrowania ();
@@ -492,26 +492,26 @@ printf("Rozpoczecie dzialania programu\n");
 
 void rx_ethernet_isr (void *context)
 {
-	int i;
+	//int i;
 	//DLugosc pakietu
 
 	struct netif * netif = &TSE1netif;
-	lwip_tse_info* tse_ptr = (lwip_tse_info *) context;
+	//lwip_tse_info* tse_ptr = (lwip_tse_info *) context;
 
 
 	// Wait until receive descriptor transfer is complete
 	while (alt_avalon_sgdma_check_descriptor_status(&rx_descriptor) != 0)
 		;
 	pklen = IORD_16DIRECT(&(rx_descriptor.actual_bytes_transferred),0);
-	printf("dlugosc odebranych danych to: %d",pklen);
+	//printf("dlugosc odebranych danych to: %d",pklen);
 	// Clear input line before writing
-	for (i = 0; i < (6 + text_length); i++) {
-		alt_printf( "%c", 0x08 );		 // 0x1024008 --> backspace
-	}
+	//for (i = 0; i < (6 + text_length); i++) {
+	//	alt_printf( "%c", 0x08 );		 // 0x1024008 --> backspace
+	//}
 
 	// Output received text
 //	alt_printf( "receive> %s\n", rx_frame + 16  );
-	i=0;
+	//i=0;
 	// Set up non-blocking transfer of sgdma receive descriptor
 
 	//int speed=alt_tse_mac_get_common_speed( ETH_TSE_BASE);
@@ -523,8 +523,8 @@ void rx_ethernet_isr (void *context)
 	//*(tse + 0x3A)=0x00040000;
 
 	 //printf("Readtse : %i",readtse);
-	printf("\n");
-			printf("odebrano ramke \n");
+//	printf("\n");
+	//		printf("odebrano ramke \n");
 			//TODO usunac dla poprawienia wydajnosci
 	/*while(i<pklen)
 	 {
@@ -535,6 +535,7 @@ void rx_ethernet_isr (void *context)
 					i=1024;
 				}
 			}*/
+
 	memcpy(tx_frame,rx_frame,pklen);
 	p->payload=tx_frame;
 	//TODO ogarnac to: ethernet_input
@@ -542,7 +543,7 @@ void rx_ethernet_isr (void *context)
 
 	// Reprint current input line after the outputs
 //	alt_printf( "send> %s", tx_frame + 16 );
-	i=0;
+	//i=0;
 	/*while (i<7)
 	{
 	tx_frame[i]=0x55;
@@ -580,7 +581,7 @@ void rx_ethernet_isr (void *context)
 	//Poprawic wartosc pklen na inna
 	//tx_frame[12]=0x08;
 	//tx_frame[13]=0x00;
-	i=14;
+	//i=14;
 	/*
 	while (i <pklen-4)
 	{
@@ -590,10 +591,14 @@ void rx_ethernet_isr (void *context)
 
 	//tx_frame[88]='\0';
 	//TODO uaktualnic wartosc pklen UAKTUALNIONA JEST W INNYM MIEJSCU
+	/*
 	alt_avalon_sgdma_construct_mem_to_stream_desc( &tx_descriptor1, &tx_descriptor_end1, (alt_u32 *)tx_frame, pklen-4, 0, 1, 1, 0 );
 	alt_avalon_sgdma_do_async_transfer( sgdma_tx_dev, &tx_descriptor1 );
 	while (alt_avalon_sgdma_check_descriptor_status(&tx_descriptor1) != 0);
-
+*/
+	alt_avalon_sgdma_construct_mem_to_stream_desc( &tx_descriptor, &tx_descriptor_end, (alt_u32 *)tx_frame, pklen-4, 0, 1, 1, 0 );
+	alt_avalon_sgdma_do_async_transfer( sgdma_tx_dev, &tx_descriptor );
+	while (alt_avalon_sgdma_check_descriptor_status(&tx_descriptor) != 0);
 	//ff_tx_eop=1;
 	alt_avalon_sgdma_construct_stream_to_mem_desc( &rx_descriptor, &rx_descriptor_end, (alt_u32 *)rx_frame, 0, 0 );
 
@@ -601,10 +606,12 @@ void rx_ethernet_isr (void *context)
 
 
 	//alt_avalon_sgdma_do_async_transfer( sgdma_rx_dev, &rx_descriptor );
+
 	p->len=0;
 	p->tot_len=0;
+
 	printf("\n");
-			printf("zakonczono odbior ramki\n");
+	printf("zakonczono odbior ramki\n");
 
 	// Create new receive sgdma descriptor
 	//	alt_avalon_sgdma_construct_stream_to_mem_desc( &rx_descriptor, &rx_descriptor_end, (alt_u32 *)rx_frame, 0, 0 );
@@ -1223,7 +1230,7 @@ void ciph_3des_pot ( unsigned char *data, unsigned char *ciph_data, unsigned int
 	alt_avalon_sgdma_construct_mem_to_stream_desc( &tdesin_descriptor, &tdesin_descriptor_end, (alt_u32 *)data, length, 0, 1, 1, 0 );
 	//printf("length: %i \n",length);
 	//printf("tdesin_descriptor: %i \n",tdesin_descriptor);
-	//printf("Adres blok testowy: %i \n",data);
+	printf("Adres blok testowy: %i \n",data);
 	//printf("Adres blok testowy: %i \n",&blok_testowy);
 	//printf("Adres blok wynikow: %i \n",ciph_data);
 	//printf("tdesin_descriptor_end: %i \n",tdesin_descriptor_end);
@@ -1247,7 +1254,7 @@ void ciph_3des_pot ( unsigned char *data, unsigned char *ciph_data, unsigned int
 	//printf("tdesout_descriptor: %X \n",&tdesout_descriptor);
 
 
-	alt_avalon_sgdma_construct_stream_to_mem_desc( &tdesout_descriptor, &tdesout_descriptor_end, (alt_u32 *)ciph_data, 0, 0 );
+	alt_avalon_sgdma_construct_stream_to_mem_desc( &tdesout_descriptor, &tdesout_descriptor_end, (alt_u32 *)ciph_data+4, 0, 0 );
 	//alt_avalon_sgdma_do_async_transfer( sgdma_out_dev, &tdesout_descriptor );
 	while((alt_avalon_sgdma_do_async_transfer( sgdma_out_dev, &tdesout_descriptor ) != 0))
 	{
@@ -1411,19 +1418,29 @@ void wyswietl_wyniki_sz_dsz()
 			i++;
 		}
 }
-void definicja_szyfrowania_UDP()
+void wprowadzenie_adresow_ip_do_3des()
 {
-	 ciph_ip4_addr1=192;
-	 ciph_ip4_addr2=168;
-	 ciph_ip4_addr3=0;
-	 ciph_ip4_addr4=7;
-	 ciph_ip4_port=0;
+	 udp_ciph_ip4_addr1=192;
+	 udp_ciph_ip4_addr2=168;
+	 udp_ciph_ip4_addr3=0;
+	 udp_ciph_ip4_addr4=7;
+	 udp_ciph_ip4_port=0;
 
-	 deciph_ip4_addr1=192;
-	 deciph_ip4_addr2=168;
-	 deciph_ip4_addr3=0;
-	 deciph_ip4_addr4=5;
-	 deciph_ip4_port=0;
+	 udp_deciph_ip4_addr1=192;
+	 udp_deciph_ip4_addr2=168;
+	 udp_deciph_ip4_addr3=0;
+	 udp_deciph_ip4_addr4=7;
+	 udp_deciph_ip4_port=0;
+
+	 ip_ciph_ip4_addr1=192;
+	 ip_ciph_ip4_addr2=168;
+	 ip_ciph_ip4_addr3=0;
+	 ip_ciph_ip4_addr4=7;
+
+	 ip_deciph_ip4_addr1=192;
+	 ip_deciph_ip4_addr2=168;
+	 ip_deciph_ip4_addr3=0;
+	 ip_deciph_ip4_addr4=7;
 }
 struct netif* inicjalizacja_netif (struct netif *netif)
 {

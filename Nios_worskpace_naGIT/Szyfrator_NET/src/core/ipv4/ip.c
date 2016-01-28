@@ -203,7 +203,21 @@ ip_input(struct pbuf *p, struct netif *inp)
   /* identify the IP header */
   iphdr = (struct ip_hdr *)p->payload;
 
-
+  dest_ip4_addr1 = ip4_addr1(&iphdr->dest);
+  dest_ip4_addr2 = ip4_addr2(&iphdr->dest);
+  dest_ip4_addr3 = ip4_addr3(&iphdr->dest);
+  dest_ip4_addr4 = ip4_addr4(&iphdr->dest);
+  src_ip4_addr1 = ip4_addr1(&iphdr->src);
+  src_ip4_addr2 = ip4_addr2(&iphdr->src);
+  src_ip4_addr3 = ip4_addr3(&iphdr->src);
+  src_ip4_addr4 = ip4_addr4(&iphdr->src);
+  porownanie_adresow_w_IP();
+  printf("ip_input print the UDP source and destination : udp (%"U16_F".%"U16_F".%"U16_F".%"U16_F") <-- "
+               "(%"U16_F".%"U16_F".%"U16_F".%"U16_F")\n",
+               ip4_addr1(&iphdr->dest), ip4_addr2(&iphdr->dest),
+               ip4_addr3(&iphdr->dest), ip4_addr4(&iphdr->dest),
+               ip4_addr1(&iphdr->src), ip4_addr2(&iphdr->src),
+               ip4_addr3(&iphdr->src), ip4_addr4(&iphdr->src));
   //TODo
     /* obtain IP header length in number of 32-bit words */
     // iphdr_hlen = IPH_HL(iphdr);
@@ -232,7 +246,7 @@ ip_input(struct pbuf *p, struct netif *inp)
 
   /* obtain IP header length in number of 32-bit words */
   iphdr_hlen = IPH_HL(iphdr);
-  printf("iphdr_hlen: 0x%x\n",iphdr_hlen);
+  //printf("iphdr_hlen: 0x%x\n",iphdr_hlen);
   /* calculate IP header length in bytes */
 
   iphdr_hlen *= 4;
@@ -241,7 +255,11 @@ ip_input(struct pbuf *p, struct netif *inp)
   /* obtain ip length in bytes */
   iphdr_len = ntohs(IPH_LEN(iphdr));
   total_ip_len=iphdr_len;
+
+
+  ip_data_len=total_ip_len-ip_header_len;
   printf("iphdr_len: 0x%x\n",iphdr_len);
+  //printf("ip_data_len: 0x%x\n",ip_data_len);
   /* header length exceeds first pbuf length, or ip length exceeds total pbuf length? */
   if ((iphdr_hlen > p->len) || (iphdr_len > p->tot_len)) {
     if (iphdr_hlen > p->len) {
@@ -445,8 +463,78 @@ ip_input(struct pbuf *p, struct netif *inp)
   if (raw_input(p, inp) == 0)
 #endif /* LWIP_RAW */
   {
-printf("IPH_PROTO(iphdr) : 0x%x",IPH_PROTO(iphdr));
-    switch (IPH_PROTO(iphdr)) {
+	printf("IPH_PROTO(iphdr) : 0x%x",IPH_PROTO(iphdr));
+	ip_proto=IPH_PROTO(iphdr);
+	if(ifcipher_ip==1)
+	{
+		int ip_len_tmp=ip_data_len;
+		memcpy(ip_data, tx_frame+16+ip_header_len, ip_len_tmp);
+		cipher_IP(&ip_data,&ip_len_tmp);
+		//printf("ip_data_len: %i\n",ip_data_len);
+		printf("Dane ip: \n");
+		int i=0;
+		while( i < ip_len_tmp)
+		{
+			printf("%x",ip_data[i]);
+			i++;
+			//TODO tutaj zrobic zamiast petli while przerzucenie danych do szyfratora i zakonczenie goto end; lub wywolanie udp_output byc moze w innym miejscu
+		}
+
+		;
+		//Ponowne wyliczenie dlugosc calkowitej pakietu IP
+		//roznica w dlugosci pakietow
+		unsigned int diff_lngth=ip_len_tmp-ip_data_len;
+		pklen+=diff_lngth;
+		total_ip_len=total_ip_len+diff_lngth;
+		//Ustawienie dlugosci pakietu IP
+		tx_frame[25]=0xFD;
+		wyslij_IP();
+		//todo zrobic to co przy deszyfrowaniu dane_udp_ciph zamiast udp_data i usunac z cipher_UDP i decipher_UDP petle while
+		memcpy(  tx_frame+16+ip_header_len, dane_ip_ciph, ip_len_tmp);
+		return ERR_OK;
+
+	}
+
+	if (ifdecipher_udp==1)
+	{	//unsigned char *temp_ptr=tx_frame[44];
+		int ip_len_tmp=ip_data_len;
+		//printf("ip_len_tmp: %i\n",ip_len_tmp);
+		printf("Dane udp: \n");
+
+		memcpy(ip_data, tx_frame+16+ip_header_len, ip_len_tmp);
+		int i=0;
+		while( i < ip_len_tmp)
+		{
+			printf("%x",ip_data[i]);
+			i++;
+			//TODO tutaj zrobic zamiast petli while przerzucenie danych do szyfratora i zakonczenie goto end; lub wywolanie udp_output byc moze w innym miejscu
+		}
+
+		decipher_IP(ip_data,&ip_len_tmp);
+
+		//Ponowne wyliczenie dlugosc calkowitej pakietu IP
+		//roznica w dlugosci pakietow
+		unsigned int diff_lngth=ip_len_tmp-ip_data_len;
+		//u16_t tmp_udp_checksum;
+		pklen+=diff_lngth;
+		total_ip_len=total_ip_len+diff_lngth;
+
+		//Ustawienie dlugosci pakietu IP
+		tx_frame[25]=ip_proto;
+		wyslij_IP();
+		/*tmp_udp_checksum=inet_chksum_pseudo(p, &src_ip4, &dst_ip4, IP_PROTO_UDP, udplen);
+
+		  if (tmp_udp_checksum == 0x0000) tmp_udp_checksum = 0xffff;
+		  printf("tmp_udp_checksum: 0x%X",tmp_udp_checksum);
+		rx_frame[42]=tmp_udp_checksum;
+		rx_frame[43]=tmp_udp_checksum>>8;*/
+		memcpy(  tx_frame+16+ip_header_len, dane_ip_deciph, ip_len_tmp);
+		//memcpy( p->payload+8, udp_data, udplen_tmp);
+		//udp_send(pcb,p);
+		return ERR_OK;
+	}
+
+    switch (ip_proto) {
 #if LWIP_UDP
     case IP_PROTO_UDP:
 #if LWIP_UDPLITE
@@ -754,3 +842,231 @@ ip_debug_print(struct pbuf *p)
   LWIP_DEBUGF(IP_DEBUG, ("+-------------------------------+\n"));
 }
 #endif /* IP_DEBUG */
+void porownanie_adresow_w_IP()
+{
+
+	ifcipher_ip=0;
+	ifdecipher_ip=0;
+	if(ip_ciph_ip4_addr1 == dest_ip4_addr1
+			&& ip_ciph_ip4_addr2 == dest_ip4_addr2
+			&& ip_ciph_ip4_addr3 == dest_ip4_addr3
+			&& ip_ciph_ip4_addr4 == dest_ip4_addr4
+				)
+	{
+		//printf("Szyfrowac  \n");
+		ifcipher_ip=1;
+	}
+
+	if(ip_deciph_ip4_addr1 == src_ip4_addr1
+				&& ip_deciph_ip4_addr2 == src_ip4_addr2
+				&& ip_deciph_ip4_addr3 == src_ip4_addr3
+				&& ip_deciph_ip4_addr4 == src_ip4_addr4
+					)
+	{
+		//printf("Deszyfrowac\n");
+		ifdecipher_ip=1;
+	}
+	//printf("ifcipher_udp: %i , ifdecipher_udp  %i \n",ifcipher_udp,ifdecipher_udp);
+
+
+}
+//funkcja szyfrowania danych IP
+void cipher_IP(unsigned char *dane_ip,  int *dlugosc_danych)
+{
+
+
+	int dlugosc_danych_tmp=*dlugosc_danych;
+	if (dlugosc_danych_tmp%8==0)
+	{
+		*dlugosc_danych+=8;
+
+	}
+	else
+	{
+		*dlugosc_danych=(dlugosc_danych_tmp/8+2)*8;
+	}
+	printf("dlugosc_danych: %i \n",*dlugosc_danych);
+	//printf("dlugosc_danych_tmp: %i \n",dlugosc_danych_tmp);
+	//Ustawienie oryginalnej dlugosci danych UDP na koncu
+	//printf("Dane UDP przed zaszyfrowaniem: %u   %u   %u\n",&dane_udp1, &dane_udp,&dane_udp2);
+	if(dlugosc_danych_tmp>0xFF)
+	{
+		dane_ip[*dlugosc_danych-1]=dlugosc_danych_tmp;
+		dane_ip[*dlugosc_danych-2]=dlugosc_danych_tmp>>8;
+	}
+	else
+	{
+		dane_ip[*dlugosc_danych-1]=dlugosc_danych_tmp;
+	}
+	dane_ip[*dlugosc_danych-3]=ip_proto;
+	//printf("Dane UDP przed zaszyfrowaniem: %u   %u   %u  %u\n",&dane_udp1, &dane_udp,&dane_udp2,&dane_udp_ciph);
+/*
+	while(i<*dlugosc_danych)
+	{
+		printf("%X",dane_udp[i]);
+		i++;
+	}*/
+	//printf("adres dane_udp: %i",dane_udp);
+	//printf("adres dane_udp_ciph: %i",&dane_udp_ciph);
+	//ciph_3des_pot(dane_udp,dane_udp_ciph,*dlugosc_danych);
+	//ciph_3des_pot(dane_udp,dane_udp_ciph,*dlugosc_danych);
+	ciph_3des_pot(dane_ip,dane_ip_ciph-16,*dlugosc_danych);
+	//ciph_3des_pot(dane_udp2,dane_udp_ciph,*dlugosc_danych);
+	//ciph_3des_pot(dane_udp2,dane_udp_ciph,*dlugosc_danych);
+	//int i=0;
+	//printf("Dane UDP po zaszyfrowaniu: \n");
+	//i=0;
+	//usleep(10000);
+	/*while(i<*dlugosc_danych)
+	{
+
+		if(dane_ip_ciph[i]>15)
+		{
+			if(i%8==0)
+			{
+				printf("\n0x%X",dane_ip_ciph[i]);
+			}
+			else
+			{
+				printf("%X",dane_ip_ciph[i]);
+			}
+		}
+		else
+		{
+			if(i%8==0)
+			{
+				printf("\n0x0%X",dane_ip_ciph[i]);
+			}
+			else
+			{
+				printf("0%X",dane_ip_ciph[i]);
+			}
+		}
+		//dane_ip[i]=dane_ip_ciph[i];
+		i++;
+	}
+*/
+	//dane_udp=dane_udp_ciph;
+}
+
+
+
+void wyslij_IP()
+{
+	u16_t tmp_ip_checksum;
+
+	unsigned char *tmp_ip_checksum_2part= &tmp_ip_checksum+1;
+	//unsigned char tmp_ip_checksum[2]={0};
+	printf("wyslij_IP\n");
+
+
+	if(total_ip_len>0xFF)
+	{
+
+			tx_frame[19]=total_ip_len;
+			tx_frame[18]=total_ip_len>>8;
+	}
+	else
+	{
+		tx_frame[19]=total_ip_len;
+	}
+	//wyliczenie checksumy IP
+	//tmp_ip_checksum=0x0000;
+	printf("ip_header_len: %i\n",ip_header_len);
+	tx_frame[26]=0x00;
+	tx_frame[27]=0x00;
+	//printf("rx_frame[26]: 0x%X\n",tx_frame[26]);
+	//printf("rx_frame[27]: 0x%X\n",tx_frame[27]);
+
+	//printf("rx_frame[16]: 0x%X\n",tx_frame[16]);
+	tmp_ip_checksum= (u16_t)inet_chksum((tx_frame+16), ip_header_len);
+	printf("tmp_ip_checksum: 0x%X\n",tmp_ip_checksum);
+	tx_frame[26]=tmp_ip_checksum;
+	tx_frame[27]=tmp_ip_checksum>>8;
+	printf("rx_frame[26]: 0x%X\n",tx_frame[26]);
+	printf("rx_frame[27]: 0x%X\n",tx_frame[27]);
+
+
+
+}
+/*
+ * Funkcja przekazujaca do odszyfrowania dane IP
+ */
+void decipher_IP(unsigned char* dane_ip,  int* dlugosc_danych)
+{
+	//unsigned char* dane_udp1=dane_udp+4;
+	//unsigned char* dane_udp2;
+	//dane_udp2=dane_udp1+4;
+	//int dlugosc_danych_tmp;
+	int dlugosc_danych_tmp[2];
+	//=*dlugosc_danych;
+
+	//printf("dlugosc_danych: %i \n",*dlugosc_danych);
+	//printf("dlugosc_danych_tmp: %i \n",dlugosc_danych_tmp);
+	//Ustawienie oryginalnej dlugosci danych UDP na koncu
+	//printf("Dane UDP przed zaszyfrowaniem: %u   %u   %u\n",&dane_udp1, &dane_udp,&dane_udp2);
+	//dane_udp[*dlugosc_danych-1]=dlugosc_danych_tmp;
+
+	//printf("Dane UDP przed zaszyfrowaniem: %u   %u   %u\n",&dane_udp1, &dane_udp,&dane_udp2);
+/*
+	while(i<*dlugosc_danych)
+	{
+		printf("%X",dane_udp[i]);
+		i++;
+	}*/
+	//printf("adres dane_udp: %i",dane_udp);
+	//printf("adres dane_udp_ciph: %i",&dane_udp_ciph);
+	deciph_3des_pot(dane_ip,dane_ip_deciph,*dlugosc_danych);
+	//ciph_3des_pot(dane_udp1,dane_udp_ciph,*dlugosc_danych);
+	//ciph_3des_pot(dane_udp2,dane_udp_ciph,*dlugosc_danych);
+
+	int i=0;
+	printf("Dane IP po zdeszyfrowaniu: \n");
+	//i=0;
+	//usleep(10000);
+	while(i<*dlugosc_danych)
+	{
+
+		if(dane_ip_deciph[i]>15)
+		{
+			if(i%8==0)
+			{
+				printf("\n0x%X",dane_ip_deciph[i]);
+			}
+			else
+			{
+				printf("%X",dane_ip_deciph[i]);
+			}
+		}
+		else
+		{
+			if(i%8==0)
+			{
+				printf("\n0x0%X",dane_ip_deciph[i]);
+			}
+			else
+			{
+				printf("0%X",dane_ip_deciph[i]);
+			}
+		}
+		/*if (dlugosc_danych_tmp%8==0)
+			{
+				*dlugosc_danych+=8;
+
+			}
+			else
+			{
+				*dlugosc_danych=(dlugosc_danych_tmp/8+2)*8;
+			}*/
+		//dane_ip[i]=dane_udp_deciph[i];
+		i++;
+	}
+	printf(" dane_ip_deciph[*dlugosc_danych-2] %i\n",dane_ip_deciph[*dlugosc_danych-2]);
+	printf(" dane_ip_deciph[*dlugosc_danych-2] %i\n",dane_ip_deciph[*dlugosc_danych-1]);
+	printf(" *dlugosc_danych %i\n",*dlugosc_danych);
+	dlugosc_danych_tmp[0]=dane_ip_deciph[*dlugosc_danych-2];
+	dlugosc_danych_tmp[1]=dane_ip_deciph[*dlugosc_danych-1];
+	ip_proto=dane_ip_deciph[*dlugosc_danych-3];
+	*dlugosc_danych=dlugosc_danych_tmp[0]*256 +dlugosc_danych_tmp[1];
+
+}

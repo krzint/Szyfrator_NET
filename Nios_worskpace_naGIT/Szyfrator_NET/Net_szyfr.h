@@ -12,7 +12,7 @@
 
 void ciph_3des_pot( unsigned char *data, unsigned char *cipher_data,unsigned int length);
 void deciph_3des_pot( unsigned char *data, unsigned char *cipher_data,unsigned int length);
-void definicja_szyfrowania_UDP();
+void wprowadzenie_adresow_ip_do_3des();
 void test_wydajnosci_3des_pot();
 struct netif TSE1netif;
 
@@ -20,6 +20,6 @@ struct netif TSE1netif;
 int pklen;
 
 // Utworzenie ramek odbiorczych
-unsigned char rx_frame[1024];
-unsigned char tx_frame[1024];
+unsigned char rx_frame[1528];
+unsigned char tx_frame[1528];
 #endif /* NET_SZYFR_H_ */

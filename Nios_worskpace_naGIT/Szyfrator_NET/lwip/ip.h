@@ -44,6 +44,40 @@
 extern "C" {
 #endif
 
+//Calkowita dlugosc pakietu IP
+u16_t total_ip_len;
+//Dlugosc naglowka IP w bajtach
+u16_t ip_header_len;
+//Dlugosc danych  IP w bajtach
+u16_t ip_data_len;
+//Protokó³ warstwy wy¿szej
+unsigned char ip_proto;
+
+// docelowy adres IP poddawany szyfrowaniu danych IP
+u16_t ip_ciph_ip4_addr1;
+u16_t ip_ciph_ip4_addr2;
+u16_t ip_ciph_ip4_addr3;
+u16_t ip_ciph_ip4_addr4;
+
+// adres Ÿród³owy IP poddawany deszyfrowaniu danych IP
+u16_t ip_deciph_ip4_addr1;
+u16_t ip_deciph_ip4_addr2;
+u16_t ip_deciph_ip4_addr3;
+u16_t ip_deciph_ip4_addr4;
+
+//zmienna pomocnicza bedaca wynikiem tego czy dane IP maja zostac zaszyfrowane
+unsigned int ifcipher_ip;
+//zmienna pomocnicza bedaca wynikiem tego czy dane IP maja zostac zdeszyfrowane
+unsigned int ifdecipher_ip;
+
+void porownanie_adresow_w_IP();
+
+
+unsigned char ip_data[1528];
+unsigned char  dane_ip_ciph [1528];
+unsigned char  dane_ip_deciph [1528];
+
+
 /** Currently, the function ip_output_if_opt() is only used with IGMP */
 #define IP_OPTIONS_SEND   LWIP_IGMP
 
@@ -85,10 +119,7 @@ extern "C" {
   /* link layer address resolution hint */ \
   IP_PCB_ADDRHINT
 
-//Calkowita dlugosc pakietu IP
-u16_t total_ip_len;
-//Dlugosc naglowka IP w bajtach
-u16_t ip_header_len;
+
 struct ip_pcb {
 /* Common members of all PCB types */
   IP_PCB;

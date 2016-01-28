@@ -127,19 +127,13 @@ udp_input(struct pbuf *p, struct netif *inp)
   dest = ntohs(udphdr->dest);
 
   udp_debug_print(udphdr);
-  dest_ip4_addr1 = ip4_addr1(&iphdr->dest);
-  dest_ip4_addr2 = ip4_addr2(&iphdr->dest);
-  dest_ip4_addr3 = ip4_addr3(&iphdr->dest);
-  dest_ip4_addr4 = ip4_addr4(&iphdr->dest);
+  // port UDP docelowy
   dest_ip4_port = ntohs(udphdr->dest);
   dst_ip4=iphdr->dest;
   src_ip4=iphdr->src;
-  //src_ip4_addr1 = ip4_addr1(&iphdr->src);
-  //src_ip4_addr2 = ip4_addr2(&iphdr->src);
-  //src_ip4_addr3 = ip4_addr3(&iphdr->src);
-  //src_ip4_addr4 = ip4_addr4(&iphdr->src);
-  //src_ip4_port = ntohs(udphdr->src);
-  porownanie_adresow();
+  // port UDP Ÿród³owy
+  src_ip4_port = ntohs(udphdr->src);
+  porownanie_adresow_w_UDP();
 
   printf("udp_input print the UDP source and destination : udp (%"U16_F".%"U16_F".%"U16_F".%"U16_F", %"U16_F") <-- "
                "(%"U16_F".%"U16_F".%"U16_F".%"U16_F", %"U16_F")\n",
@@ -357,8 +351,9 @@ udp_input(struct pbuf *p, struct netif *inp)
 
 
   	  int udplen_tmp=udplen-8; //minus 8 poniewaz usuniety zostal naglowek udp
-	memcpy(udp_data, p->payload+8, udplen_tmp);
-
+	//memcpy(udp_data, p->payload+8, udplen_tmp);
+  	memcpy(udp_data, tx_frame+44, udplen_tmp);
+  	//udp_data=&rx_frame+44;
 	int i =0;
   //	*udp_pcb_tmp=pcb;
 	/*printf("Dane udp: \n");
@@ -371,6 +366,8 @@ udp_input(struct pbuf *p, struct netif *inp)
 	*/
 	if(ifcipher_udp==1)
 	{
+
+		unsigned char *temp_ptr=tx_frame[44];
 		cipher_UDP(&udp_data,&udplen_tmp);
 		printf("udplen_tmp: %i\n",udplen_tmp);
 		printf("Dane udp: \n");
@@ -381,7 +378,7 @@ udp_input(struct pbuf *p, struct netif *inp)
 			i++;
 			//TODO tutaj zrobic zamiast petli while przerzucenie danych do szyfratora i zakonczenie goto end; lub wywolanie udp_output byc moze w innym miejscu
 		}
-		unsigned char *temp_ptr=rx_frame[42];
+
 		printf("udp_input: pbuf_free - pakiet nie dla nas\n");
 		//Ponowne wyliczenie dlugosc calkowitej pakietu IP
 		//roznica w dlugosci pakietow
@@ -390,24 +387,27 @@ udp_input(struct pbuf *p, struct netif *inp)
 		total_ip_len=total_ip_len+diff_lngth;
 		udplen=udplen_tmp+8;
 		wyslij_UDP();
+		//todo zrobic to co przy deszyfrowaniu dane_udp_ciph zamiast udp_data i usunac z cipher_UDP i decipher_UDP petle while
 		memcpy( tx_frame+44, udp_data, udplen_tmp);
 		//memcpy( p->payload+8, udp_data, udplen_tmp);
 		//udp_send(pcb,p);
 
 	}
 	if (ifdecipher_udp==1)
-	{
-		decipher_UDP(&udp_data,&udplen_tmp);
+	{	//unsigned char *temp_ptr=tx_frame[44];
+
 		printf("udplen_tmp: %i\n",udplen_tmp);
 		printf("Dane udp: \n");
 		i=0;
+		memcpy( udp_data,tx_frame+44 , udplen_tmp);
 		while( i < udplen_tmp)
 		{
 			printf("%x",udp_data[i]);
 			i++;
 			//TODO tutaj zrobic zamiast petli while przerzucenie danych do szyfratora i zakonczenie goto end; lub wywolanie udp_output byc moze w innym miejscu
 		}
-		unsigned char *temp_ptr=rx_frame[42];
+
+		decipher_UDP(udp_data,&udplen_tmp);
 		printf("udp_input: pbuf_free - pakiet nie dla nas\n");
 		//Ponowne wyliczenie dlugosc calkowitej pakietu IP
 		//roznica w dlugosci pakietow
@@ -424,7 +424,7 @@ udp_input(struct pbuf *p, struct netif *inp)
 		  printf("tmp_udp_checksum: 0x%X",tmp_udp_checksum);
 	    rx_frame[42]=tmp_udp_checksum;
 		rx_frame[43]=tmp_udp_checksum>>8;*/
-		memcpy( tx_frame+44, udp_data, udplen_tmp);
+		memcpy( tx_frame+44, dane_udp_deciph, udplen_tmp);
 		//memcpy( p->payload+8, udp_data, udplen_tmp);
 		//udp_send(pcb,p);
 	}
@@ -1138,7 +1138,16 @@ void wyslij_UDP()
 	//unsigned char tmp_ip_checksum[2]={0};
 	printf("wyslij_UDP\n");
 	//Ustawienie dlugosci pakietu IP
-	tx_frame[19]=total_ip_len;
+	if(total_ip_len>0xFF)
+	{
+
+			tx_frame[19]=total_ip_len;
+			tx_frame[18]=total_ip_len>>8;
+	}
+	else
+	{
+		tx_frame[19]=total_ip_len;
+	}
 	//wyliczenie checksumy IP
 	//tmp_ip_checksum=0x0000;
 	printf("ip_header_len: %i\n",ip_header_len);
@@ -1172,26 +1181,26 @@ wyliczenie_udp_checksum()
 	printf("wskaznik+1: %x \n",*(wskaznik+1);
 	return udp_checksum;
 }*/
-void porownanie_adresow()
+void porownanie_adresow_w_UDP()
 {
 
 	ifcipher_udp=0;
 	ifdecipher_udp=0;
-	if(ciph_ip4_addr1 == dest_ip4_addr1
-			&& ciph_ip4_addr2 == dest_ip4_addr2
-			&& ciph_ip4_addr3 == dest_ip4_addr3
-			&& ciph_ip4_addr4 == dest_ip4_addr4
-			&& ciph_ip4_port == dest_ip4_port	)
+	if(udp_ciph_ip4_addr1 == dest_ip4_addr1
+			&& udp_ciph_ip4_addr2 == dest_ip4_addr2
+			&& udp_ciph_ip4_addr3 == dest_ip4_addr3
+			&& udp_ciph_ip4_addr4 == dest_ip4_addr4
+			&& udp_ciph_ip4_port == dest_ip4_port	)
 	{
 		//printf("Szyfrowac  \n");
 		ifcipher_udp=1;
 	}
 
-	if(deciph_ip4_addr1 == dest_ip4_addr1
-				&& deciph_ip4_addr2 == dest_ip4_addr2
-				&& deciph_ip4_addr3 == dest_ip4_addr3
-				&& deciph_ip4_addr4 == dest_ip4_addr4
-				&& deciph_ip4_port == dest_ip4_port	)
+	if(udp_deciph_ip4_addr1 == src_ip4_addr1
+				&& udp_deciph_ip4_addr2 == src_ip4_addr2
+				&& udp_deciph_ip4_addr3 == src_ip4_addr3
+				&& udp_deciph_ip4_addr4 == src_ip4_addr4
+				&& udp_deciph_ip4_port == src_ip4_port	)
 	{
 		printf("Deszyfrowac\n");
 		ifdecipher_udp=1;
