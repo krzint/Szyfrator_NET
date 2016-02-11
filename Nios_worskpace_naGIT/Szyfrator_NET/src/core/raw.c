@@ -121,7 +121,7 @@ raw_input(struct pbuf *p, struct netif *inp)
     prev = pcb;
     pcb = pcb->next;
   }
-  printf("raw_input eaten : %i /n",eaten);
+ // printf("raw_input eaten : %i /n",eaten);
   return eaten;
 }
 

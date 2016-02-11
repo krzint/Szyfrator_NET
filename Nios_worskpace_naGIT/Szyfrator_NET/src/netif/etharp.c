@@ -1147,12 +1147,13 @@ etharp_request(struct netif *netif, struct ip_addr *ipaddr)
 err_t
 ethernet_input(struct pbuf *p, struct netif *netif)
 {
-	printf("\n ethernet_input \n");
+  //printf("\n ethernet_input \n");
   struct eth_hdr* ethhdr;
   u16_t type;
 
   /* points to packet payload, which starts with an Ethernet header */
   ethhdr = p->payload;
+  /*
   LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE,
     ("ethernet_input: dest:%02x:%02x:%02x:%02x:%02x:%02x, src:%02x:%02x:%02x:%02x:%02x:%02x, type:%2hx\n",
      (unsigned)ethhdr->dest.addr[0], (unsigned)ethhdr->dest.addr[1], (unsigned)ethhdr->dest.addr[2],
@@ -1160,9 +1161,9 @@ ethernet_input(struct pbuf *p, struct netif *netif)
      (unsigned)ethhdr->src.addr[0], (unsigned)ethhdr->src.addr[1], (unsigned)ethhdr->src.addr[2],
      (unsigned)ethhdr->src.addr[3], (unsigned)ethhdr->src.addr[4], (unsigned)ethhdr->src.addr[5],
      (unsigned)htons(ethhdr->type)));
-
+*/
   type = htons(ethhdr->type);
-  printf("Packet type: 0x%x \n",type);
+  //printf("Packet type: 0x%x \n",type);
 #if ETHARP_SUPPORT_VLAN
   if (type == ETHTYPE_VLAN) {
     struct eth_vlan_hdr *vlan = (struct eth_vlan_hdr*)(((char*)ethhdr) + SIZEOF_ETH_HDR);
@@ -1178,7 +1179,7 @@ ethernet_input(struct pbuf *p, struct netif *netif)
 #endif /* ETHARP_SUPPORT_VLAN */
 
   switch (type) {
-  printf("Packet type: 0x%x \n",type);
+  //printf("Packet type: 0x%x \n",type);
     /* IP packet? */
     case ETHTYPE_IP:
 #if ETHARP_TRUST_IP_MAC
@@ -1191,18 +1192,18 @@ ethernet_input(struct pbuf *p, struct netif *netif)
       if(pbuf_header(p, -(s16_t)SIZEOF_ETH_HDR)) {
         LWIP_ASSERT("Can't move over header in packet", 0);
         pbuf_free(p);
-        printf("NOT pass to IP layer\n");
+       // printf("NOT pass to IP layer\n");
         p = NULL;
       } else {
         /* pass to IP layer */
-    	  printf("pass to IP layer\n");
+    	//  printf("pass to IP layer\n");
         ip_input(p, netif);
       }
       break;
       
     case ETHTYPE_ARP:
       /* pass p to ARP module */
-      etharp_arp_input(netif, (struct eth_addr*)(netif->hwaddr), p);
+      //etharp_arp_input(netif, (struct eth_addr*)(netif->hwaddr), p);
       break;
 
 #if PPPOE_SUPPORT

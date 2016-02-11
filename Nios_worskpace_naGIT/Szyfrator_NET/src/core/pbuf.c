@@ -348,7 +348,7 @@ pbuf_realloc(struct pbuf *p, u16_t new_len)
   struct pbuf *q;
   u16_t rem_len; /* remaining length */
   s32_t grow;
-  printf("pbuf_realloc - wewnatrz funkcji \n");
+  //printf("pbuf_realloc - wewnatrz funkcji \n");
   /* TODO odkomentowaæ jak cos
   LWIP_ASSERT("pbuf_realloc: p != NULL", p != NULL);
   LWIP_ASSERT("pbuf_realloc: sane p->type", p->type == PBUF_POOL ||
@@ -430,7 +430,7 @@ pbuf_header(struct pbuf *p, s16_t header_size_increment)
   u16_t type;
   void *payload;
   u16_t increment_magnitude;
-  printf("poczatek pbuf_header,header_size_increment:  %i \n", header_size_increment);
+  //printf("poczatek pbuf_header,header_size_increment:  %i \n", header_size_increment);
   //TODO LWIP_ASSERT("p != NULL", p != NULL);
   /*
   if ((header_size_increment == 0) || (p == NULL))
@@ -439,7 +439,7 @@ pbuf_header(struct pbuf *p, s16_t header_size_increment)
 	  return 0;
   }
   */
-  printf ("p != NULL\n");
+ // printf ("p != NULL\n");
  
   if (header_size_increment < 0){
     increment_magnitude = -header_size_increment;
@@ -461,15 +461,15 @@ pbuf_header(struct pbuf *p, s16_t header_size_increment)
 //TODO
   //type = p->type;
   type=PBUF_RAM;
-  printf ("type : %i \n", type);
-  printf ("p->len %i\n", p->len);
-  printf ("p->tot_len %i\n", p->tot_len);
+  //printf ("type : %i \n", type);
+  //printf ("p->len %i\n", p->len);
+  //printf ("p->tot_len %i\n", p->tot_len);
   /* remember current payload pointer */
   payload = p->payload;
 
   /* pbuf types containing payloads? */
   if (type == PBUF_RAM || type == PBUF_POOL) {
-	  printf("type == PBUF_RAM || type == PBUF_POOL\n");
+	 // printf("type == PBUF_RAM || type == PBUF_POOL\n");
     /* set new payload pointer */
     p->payload = (u8_t *)p->payload - header_size_increment;
     /* boundary check fails? */
@@ -480,7 +480,7 @@ pbuf_header(struct pbuf *p, s16_t header_size_increment)
       /* restore old payload pointer */
       p->payload = payload;
       /* bail out unsuccesfully */
-      printf("pbuf_header: bail out unsuccesfully\n");
+      //printf("pbuf_header: bail out unsuccesfully\n");
       return 1;
     }
   /* pbuf types refering to external payloads? */
@@ -493,7 +493,7 @@ pbuf_header(struct pbuf *p, s16_t header_size_increment)
     } else {
       /* cannot expand payload to front (yet!)
        * bail out unsuccesfully */
-    	printf("pbuf_header: bail out unsuccesfully\n");
+    	//printf("pbuf_header: bail out unsuccesfully\n");
       return 1;
     }
   }
@@ -505,8 +505,8 @@ pbuf_header(struct pbuf *p, s16_t header_size_increment)
   /* modify pbuf length fields */
   p->len += header_size_increment;
   p->tot_len += header_size_increment;
-  printf ("p->len %i\n", p->len);
-  printf ("p->tot_len %i\n", p->tot_len);
+ // printf ("p->len %i\n", p->len);
+ // printf ("p->tot_len %i\n", p->tot_len);
   LWIP_DEBUGF(PBUF_DEBUG | LWIP_DBG_TRACE, ("pbuf_header: old %p new %p (%"S16_F")\n",
     (void *)payload, (void *)p->payload, header_size_increment));
 

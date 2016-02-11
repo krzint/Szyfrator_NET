@@ -21,5 +21,7 @@ int pklen;
 
 // Utworzenie ramek odbiorczych
 unsigned char rx_frame[1528];
+unsigned char rx_frame1[1528];
+
 unsigned char tx_frame[1528];
 #endif /* NET_SZYFR_H_ */

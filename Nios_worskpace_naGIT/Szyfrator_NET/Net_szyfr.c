@@ -63,29 +63,16 @@ struct netif* inicjalizacja_netif( struct netif *netif);
 unsigned int text_length;
 unsigned int result1;
 unsigned int result2;
-// Ramka transmisyjna
-//unsigned char tx_frame[1024];
-/* = {
-		0x00,0x00,
-		0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
-		0x01,0x60,0x6E,0x11,0x02,0x0F,
-		0x08,0x00,
-		0x45,0x00,0x00,0x46,0x3B,0x26,0x00,0x00,0x80,0x11,0x7E,0x21,0xC0,0xA8,0x00,0x0E,
-		0xC0,0xA8,0x00,0x01,0xD6,0x44,0x00,0x35,0x00,0x32,0x54,0xB5,0xC6,0x74,0x01,0x00,
-		0x00,0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x0D,0x73,0x70,0x6F,0x63,0x2D,0x70,0x6F,
-		0x6F,0x6C,0x2D,0x67,0x74,0x6D,0x06,0x6E,0x6F,0x72,0x74,0x6F,0x6E,0x03,0x63,0x6F,
-		0x6D,0x00,0xDE,0xFA,0x98,0x1E,'\0'
-};*/
-// Utworzenie ramek odbiorczych
-//unsigned char rx_frame[1024] = { 0 };
-unsigned char rx_frame1[1024] = { 0 };
+
+
 
 //TODO ramki testowe dla 3DES
-unsigned char blok_testowy[1024] = { 0 };
-unsigned char blok_wynikow[1024] = { 0 };
+unsigned char blok_testowy[1528] = { 0 };
+unsigned char blok_wynikow[1528] = { 0 };
 //TODO ramki testowe dla deszyfratora 3DES
-unsigned char blok_testowy_deszyfracja[1024] = { 0 };
-unsigned char blok_wynikow_deszyfracja[1024] = { 0 };
+unsigned char blok_testowy_deszyfracja[1528] = { 0 };
+unsigned char blok_wynikow_deszyfracja[1528] = { 0 };
+
 
 
 
@@ -119,7 +106,6 @@ alt_sgdma_descriptor rx_descriptor_end1  __attribute__ (( section ( ".descriptor
 
 
 //Alokacja deskryptorów w pamiêci deskryptorów dla szyfratora 3DES
-
 alt_sgdma_descriptor tdesin_descriptor		 __attribute__ (( section ( ".descriptor_memory_3des" )));
 alt_sgdma_descriptor tdesin_descriptor_end	 __attribute__ (( section ( ".descriptor_memory_3des" )));
 
@@ -127,12 +113,16 @@ alt_sgdma_descriptor tdesout_descriptor 	 __attribute__ (( section ( ".descripto
 alt_sgdma_descriptor tdesout_descriptor_end  __attribute__ (( section ( ".descriptor_memory_3des" )));
 
 //Alokacja deskryptorów w pamiêci deskryptorów dla szyfratora 3DES
-
 alt_sgdma_descriptor tdesdecryptin_descriptor		__attribute__ (( section ( ".descriptor_memory_3desdecrypt" )));
 alt_sgdma_descriptor tdesdecryptin_descriptor_end	__attribute__ (( section ( ".descriptor_memory_3desdecrypt" )));
 
 alt_sgdma_descriptor tdesdecryptout_descriptor 		__attribute__ (( section ( ".descriptor_memory_3desdecrypt" )));
 alt_sgdma_descriptor tdesdecryptout_descriptor_end  __attribute__ (( section ( ".descriptor_memory_3desdecrypt" )));
+
+
+
+
+
 
 //alokacja deskryptorow do obslugi pamieci SRAM
 /*
@@ -187,7 +177,7 @@ int main (int argc, char* argv[], char* envp[])
 {
 	static struct ip_addr   ip_zero = { 0 };
 /*
- * Deklaracja netif dla pierwszego zlacza Ethernet TODO zrobiæ to samo ale dla drugiego z³¹cza
+ * Deklaracja adresu MAC w netif dla pierwszego zlacza Ethernet TODO zrobiæ to samo ale dla drugiego z³¹cza
  */
 	TSE1netif.hwaddr[0] = 0x11;
 	TSE1netif.hwaddr[1] = 0x6E;
@@ -196,295 +186,168 @@ int main (int argc, char* argv[], char* envp[])
 	TSE1netif.hwaddr[4] = 0x0F;
 	TSE1netif.hwaddr[5] = 0x02;
 
-//dane=0;
-	/**
-	 * Inicjalizacja danych do szyfrowania
-	 */
-
 
 printf("Rozpoczecie dzialania programu\n");
-	//init_3des ( key11,  key12,  key21,  key22,  key31,  key32);
 
-	//lwip_init();
 //TODO inicjalizacja netif_add
-	if(netif_add(&TSE1netif, &ip_zero, &ip_zero, &ip_zero, TSE1netif.state, ethernetif_init, ethernet_input) == NULL)
+/*	if(netif_add(&TSE1netif, &ip_zero, &ip_zero, &ip_zero, TSE1netif.state, ethernetif_init, ethernet_input) == NULL)
 		{
 		printf( "Fatal error initializing...\n" );
 		//for(;;);
 		}
-	//netif_set_default(&TSE1netif);
+*/
+//	printf("OK\n");
 
-	// Initialize Altera TSE in a loop if waiting for a link
-	printf("Waiting for link...");
-	//while(((struct ethernetif *) TSE1netif.state)->link_alive!=1)
-	//	{
-		//mSdelay(1000);
-	//	putchar('.');
-		//tse_mac_init(0, TSE1netif.state);
-	//	}
-	printf("OK\n");
-
-	//Otworzenie transmitujacego SGDMA dla TSE0
+	//Otworzenie SGDMA transmitujacego dane do TSE0
 	sgdma_tx_dev = alt_avalon_sgdma_open ("/dev/sgdma_tx");
 	if (sgdma_tx_dev == NULL) {
-		alt_printf ("Error: nie mozna otworzyc scatter-gather dma transmit device dla TSE0\n");
+		printf ("Error: nie mozna otworzyc scatter-gather dma transmit device dla TSE0\n");
 		return -1;
-	} else alt_printf ("Otworzono scatter-gather dma transmit device dla TSE0\n");
-
-	//Otworzenie odbierajacego SGDMA dla TSE0
+	} else printf ("Otworzono scatter-gather dma transmit device dla TSE0\n");
+	//Otworzenie SGDMA odbierajacego dane z TSE0
 	sgdma_rx_dev = alt_avalon_sgdma_open ("/dev/sgdma_rx");
 	if (sgdma_rx_dev == NULL) {
-		alt_printf ("Error:  nie mozna otworzyc scatter-gather dma receive device dla TSE0\n");
+		printf ("Error:  nie mozna otworzyc scatter-gather dma receive device dla TSE0\n");
 		return -1;
-	} else alt_printf ("Otworzno scatter-gather dma receive devicedla TSE0\n");
+	} else printf ("Otworzno scatter-gather dma receive device dla TSE0\n");
 	printf ("System uruchomiony\n");
+	//Zarejestrowanie wywo³ywania funkcji przy odebraniu danych z TSE0
 	alt_avalon_sgdma_register_callback( sgdma_rx_dev, (alt_avalon_sgdma_callback) rx_ethernet_isr, 0x00000014, NULL );
-
 	// Utworzenie odbiorczego deskryptora sgdma
 	alt_avalon_sgdma_construct_stream_to_mem_desc( &rx_descriptor, &rx_descriptor_end, (alt_u32 *)rx_frame, 0, 0 );
-
+	// Uruchomienie wykonywania nie blokuj¹cego zapisu z SGDMA TSE0
 	alt_avalon_sgdma_do_async_transfer( sgdma_rx_dev, &rx_descriptor );
 
-	// Uruchomienie drugiego SGDMA
-	//
-	//
-	//Otworzenie transmitujacego SGDMA dla TSE1
+	//Otworzenie SGDMA transmitujacego dane do TSE1
 	alt_avalon_sgdma_do_async_transfer( sgdma_rx_dev1, &rx_descriptor1 );
 	sgdma_tx_dev1 = alt_avalon_sgdma_open ("/dev/sgdma_tx1");
 	if (sgdma_tx_dev1 == NULL) {
-		alt_printf ("Error: nie mozna otworzyc scatter-gather dma transmit device dla TSE1\n");
+		printf ("Error: nie mozna otworzyc scatter-gather dma transmit device dla TSE1\n");
 			return -1;
-		} else alt_printf ("Otworzono scatter-gather dma transmit device dla TSE1\n");
+		} else printf ("Otworzono scatter-gather dma transmit device dla TSE1\n");
 
-	//Otworzenie odbierajacego SGDMA dla TSE1
+	//Otworzenie SGDMA odbierajacego dane z TSE1
 	sgdma_rx_dev1 = alt_avalon_sgdma_open ("/dev/sgdma_rx1");
 	if (sgdma_rx_dev1 == NULL) {
-		alt_printf ("Error:  nie mozna otworzyc scatter-gather dma receive device dla TSE1\n");
+		printf ("Error:  nie mozna otworzyc scatter-gather dma receive device dla TSE1\n");
 		return -1;
-	} else alt_printf ("Otworzno scatter-gather dma receive devicedla TSE1\n");
+	} else printf ("Otworzno scatter-gather dma receive device dla TSE1\n");
 	printf ("System uruchomiony\n");
-
+	//Zarejestrowanie wywo³ywania funkcji przy odebraniu danych z TSE1
 	alt_avalon_sgdma_register_callback( sgdma_rx_dev1, (alt_avalon_sgdma_callback) rx_ethernet_isr1, 0x00000014, NULL );
-
-	//// Utworzenie odbiorczego deskryoptora sgdma
+	//// Utworzenie odbiorczego deskryptora sgdma
 	alt_avalon_sgdma_construct_stream_to_mem_desc( &rx_descriptor1, &rx_descriptor_end1,(alt_u32 *) rx_frame1, 0, 0 );
-
-	// Set up non-blocking transfer of sgdma receive descriptor
+	// Uruchomienie wykonywania nie blokuj¹cego zapisu z SGDMA TSE1
 	alt_avalon_sgdma_do_async_transfer( sgdma_rx_dev1, &rx_descriptor1 );
 
-	//Uruchomienie trzeciego SGDMA dla szyfratora Triple DES
 
-	//
+
+
+	//Utworzenie SGDMA dla szyfratora potokowego Triple DES
 	sgdma_out_dev = alt_avalon_sgdma_open ("/dev/sgdma_3des_out");
 	if (sgdma_out_dev == NULL) {
-		alt_printf ("Error: nie mozna otworzyc scatter-gather dma odbieraj¹cego zaszyfrowane dane 3DES\n");
+		printf ("Error: nie mozna otworzyc scatter-gather dma odbieraj¹cego zaszyfrowane dane 3DES\n");
 		return -1;
-	} else alt_printf ("Otworzono scatter-gather dma source-sink odberaj¹cy zaszyfrowane dane z szyfratora 3DES\n");
+	} else printf ("Otworzono scatter-gather dma source-sink odberaj¹cy zaszyfrowane dane z szyfratora 3DES\n");
 
 	sgdma_in_dev = alt_avalon_sgdma_open ("/dev/sgdma_3des_in");
 	if (sgdma_in_dev == NULL) {
-		alt_printf ("Error: Nie mozna otworzyc scatter-gather dma przesy³aj¹ce dane do zaszyfrowania do szyfratora 3DES\n");
+		printf ("Error: Nie mozna otworzyc scatter-gather dma przesy³aj¹ce dane do zaszyfrowania do szyfratora 3DES\n");
 		return -1;
 	} else alt_printf ("Otworzono scatter-gather dma sink-source device wysy³aj¹cy dane do szyfratora 3DES\n");
-
-	//alt_avalon_sgdma_register_callback( sgdma_out_dev, (alt_avalon_sgdma_callback) tdes_cryptpot_isr, 0x00000014, NULL );
-
-			// Utworzenie odbiorczego deskryptora sgdma
+	// Utworzenie odbiorczego deskryptora sgdma
 	alt_avalon_sgdma_construct_stream_to_mem_desc( &tdesout_descriptor, &tdesout_descriptor_end, (alt_u32 *)blok_wynikow, 0, 0 );
-
+	// Uruchomienie wykonywania nie blokuj¹cego zapisu danych z SGDMA szyfratora 3des
 	alt_avalon_sgdma_do_async_transfer( sgdma_out_dev, &tdesout_descriptor );
 
 
-	//Uruchomienie trzeciego SGDMA dla deszyfratora Triple DES
-
-	//
+	//Uruchomienie SGDMA dla deszyfratora Triple DES
 	sgdma_out_decrypt_dev = alt_avalon_sgdma_open ("/dev/sgdma_3desdecrypt_out");
 	if (sgdma_out_decrypt_dev == NULL) {
-		alt_printf ("Error: nie mozna otworzyc scatter-gather dma odbieraj¹cego zdeszyfrowane dane 3DES\n");
+		printf ("Error: nie mozna otworzyc scatter-gather dma odbieraj¹cego zdeszyfrowane dane 3DES\n");
 		return -1;
 	} else alt_printf ("Otworzono scatter-gather dma source-sink odberaj¹cy odkodowane dane z deszyfratora 3DES\n");
 
 	sgdma_in_decrypt_dev = alt_avalon_sgdma_open ("/dev/sgdma_3desdecrypt_in");
 	if (sgdma_in_decrypt_dev == NULL) {
-		alt_printf ("Error: Nie mozna otworzyc scatter-gather dma przesy³aj¹ce dane do zdeszyfrowania do deszyfratora 3DES\n");
+		printf ("Error: Nie mozna otworzyc scatter-gather dma przesy³aj¹ce dane do zdeszyfrowania do deszyfratora 3DES\n");
 		return -1;
-	} else alt_printf ("Otworzono scatter-gather dma sink-source device wysy³aj¹cy dane do deszyfratora 3DES\n");
+	} else printf ("Otworzono scatter-gather dma sink-source device wysy³aj¹cy dane do deszyfratora 3DES\n");
 
-	//alt_avalon_sgdma_register_callback( sgdma_out_dev, (alt_avalon_sgdma_callback) tdes_decryptpot_isr, 0x00000014, NULL );
-
-			// Utworzenie odbiorczego deskryptora sgdma
-	alt_avalon_sgdma_construct_stream_to_mem_desc( &tdesdecryptout_descriptor, &tdesdecryptout_descriptor_end, (alt_u32 *)blok_wynikow_deszyfracja, 0, 0 );
-
+	// Utworzenie odbiorczego deskryptora sgdma
+	alt_avalon_sgdma_construct_stream_to_mem_desc( &tdesdecryptout_descriptor,
+			&tdesdecryptout_descriptor_end, (alt_u32 *)blok_wynikow_deszyfracja, 0, 0 );
+	// Uruchomienie wykonywania nie blokuj¹cego zapisu danych z SGDMA deszyfratora 3des
 	alt_avalon_sgdma_do_async_transfer( sgdma_out_decrypt_dev, &tdesdecryptout_descriptor );
 
 
 
 
 	printf ("Cale SGDMA uruchomione\n");
-	/*
-	 * weryfikacja_szyfrowania ();
-	weryfikacja_deszyfrowania();
-	przygotowanie_danych();
 
-	*/
-	// adresy bazoweTriple-speed Ethernet MegaCore
+	// adresy bazowe komponentów Triple-speed Ethernet MegaCore
 	volatile int * tse = (int *) ETH_TSE_BASE;
-	//volatile int * tse = (int *) 0x103400;
 	volatile int * tse1 = (int *) ETH_TSE1_BASE;
-	//volatile int * tse1 = (int *) 0x103000;
+
 	// Ustawienie adresu MAC 01-60-6E-11-02-0F na oba moduly TSE
 	*(tse + 0x03) = 0x116E6001;
 	*(tse + 0x04) = 0x00000F02;
 	*(tse1 + 0x03) = 0x116E6001;
 	*(tse1 + 0x04) = 0x00000F01;
-	//  Wprowadzenie adresu Mac do netif
-/*TODO TO JU¯ jest zrobione wy¿ej
-		alteraTseNetif.hwaddr[0] = 0x11;
-		alteraTseNetif.hwaddr[1] = 0x6E;
-		alteraTseNetif.hwaddr[2] = 0x60;
-		alteraTseNetif.hwaddr[3] = 0x01;
-		alteraTseNetif.hwaddr[4] = 0x0F;
-		alteraTseNetif.hwaddr[5] = 0x02;
-*/
-	//	alt_tse_mac_set_common_speed(ETH_TSE_BASE,2);
 	printf ("Ustalenie adresu MAC\n");
-// Okreslenie adresow urzadzen PHY do ktorych dostep odbywac sie bedzie przez interfejs MDIO
-	 *(tse + 0x0F) = 0x10;
+	//Okreslenie adresow urzadzen PHY do ktorych dostep odbywac sie bedzie przez interfejs MDIO
+	*(tse + 0x0F) = 0x10;
 	*(tse + 0x10) = 0x11;
 	//Okreslenie adresow urzadzen PHY do ktorych dostep odbywac sie bedzie przez interfejs MDIO
 	 *(tse1 + 0x0F) = 0x10;
 	 *(tse1 + 0x10) = 0x11;
-	 // Write to register 20 of the PHY chip for Ethernet port 0 to set up line loopback
-	 //*(tse + 0x94 ) = 0x4000;
 	 // Ustawienie crossoveru dla obu PHY
-	// *(tse + 0xA0) = *(tse + 0xA0) | 0x0060;
-	/// *(tse1 + 0xB0) = *(tse1 + 0xB0) | 0x0060;
 	 *(tse + 0x94) = 0x4000;
 	 *(tse1 + 0x94) = 0x4000;
 
 
 	 //Uruchomienie crosoveru dla PHY
 	  *(tse + 0x90) = *(tse + 0x90) | 0x0060;
-	 // *(tse1 + 0x90) = *(tse1 + 0x90) | 0x0060;
-		//  *(tse1 + 0xB0) = *(tse1 + 0xB0) | 0x0060;
-		 // Wprowadzenie opoznienia zegara wejsciowego i wyjsciowego
-
-		///	 *(tse1 + 0xB4) = *(tse1 + 0xB4) | 0x0082;
+	 // Wprowadzenie opoznienia zegara wejsciowego i wyjsciowego
 	  *(tse + 0x94) = *(tse + 0x94) | 0x0082;
 	  *(tse1 + 0x94) = *(tse1 + 0x94) | 0x0082;
-	 // *(tse + 2) = *(tse + 2) | 0x02000043;
+
 	  // Software reset obu chipow PHY
 	  *(tse + 0x80) = *(tse + 0x80) | 0x8000;
 		while ( *(tse + 0x80) & 0x8000  )
 			;
-	//*(tse1 + 0x80) = *(tse1 + 0x80) | 0x8000;
-	//			while ( *(tse1 + 0x80) & 0x8000  )
-		//			;
-			// *(tse + 0x02) = *(tse + 0x02) | 0x2000;
-		//	 while ( *(tse + 0x02) & 0x2000  ) ; //sprawdzenie czy reset sie zakonczyl (sw_reset=0)
-		 *(tse1 + 0x02) = *(tse1 + 0x02) | 0x2000;
-			 while ( *(tse1 + 0x02) & 0x2000  ) ; //sprawdzenie czy reset sie zakonczyl (sw_reset=0)
-	 		 *(tse1 + 0xA0) = *(tse1 + 0xA0) | 0x8000;
+	 *(tse1 + 0x02) = *(tse1 + 0x02) | 0x2000;
+	 while ( *(tse1 + 0x02) & 0x2000  ) ; //sprawdzenie czy reset sie zakonczyl (sw_reset=0)
+		 *(tse1 + 0xA0) = *(tse1 + 0xA0) | 0x8000;
  		while ( *(tse1 + 0xA0) & 0x8000  ) 			 ;
-	 // Umozliwienie zapisu i odczytu oraz przesylania ramek z blednie wyliczonym CRC
+
 		printf("Udany reset obu modulow");
-///		 *(tse1 + 2) = *(tse1 + 2) | 0x02000043;
-	// *(tse + 2 ) = *(tse + 2) | 0x0000004B;
+	// Umozliwienie zapisu i odczytu ramek z blednie wyliczonym CRC
 	 *(tse + 2) = *(tse + 2) |0x040001F3;
 	 *(tse1 + 2) = *(tse1 + 2) |0x040001F3;
-	 alt_printf( "send> \n" );
+
+	 printf( "send> \n" );
 	 text_length = 0;
 	// wprowadzenie_kluczy(); //Wprowadzenie wartosci kluczy ktore mialy byc uzywane przy transmisji Ethernet
-	 weryfikacja_szyfrowania ();
+	 weryfikacja_szyfrowania (); //tutaj ustawione zostaja wartosci kluczy szyfratora 3des
 	 //usleep(2500000);
-	 weryfikacja_deszyfrowania();
-	 /* TODO odkomentowac na sam koniec
+	 weryfikacja_deszyfrowania();//tutaj ustawione zostaja wartosci kluczy deszyfratora 3des
+	 /* TODO odkomentowac jezeli chce sie przeprowadzic test wydajnosci szyfrowania na ukladzie FPGA
 	 test_wydajnosc ();
 	test_wydajnosci_sram();
 	test_wydajnosci_3des_pot();
-*/
-	wprowadzenie_adresow_ip_do_3des();
-	 //wyswietl_wyniki_sz_dsz();
-	 //wyswietl_wyniki_sz_dsz();
-	 //weryfikacja_szyfrowania ();
-
-	// weryfikacja_deszyfrowania ();
-	// weryfikacja_szyfrowania ();
-	 //wyswietl_wyniki_sz_dsz();
-	//wyswietl_wyniki_sz_dsz();
-	/*while (1) {
-
-		char new_char;
-	//	tx_frame[16] = '\0';
-
-
-		while ( (new_char = alt_getchar()) != '\n'  ) {
-
-			if (new_char == 0x08 && text_length > 0) {
-				alt_printf( "%c", new_char );
-				text_length--;
-
-				// Maintain the terminal character after the text
-				tx_frame[16 + text_length] = '\0';
-
-			} else if (text_length < 45) {
-				//alt_printf( "%c", new_char );
-				unsigned int bajt1, tmp;
-				unsigned char bajt2=0x1024000;
-				unsigned char szyfr_new_char;
-
-
-				//szyfr_new_char=IORD(SZYFRXOR_0_BASE,0);
-				// Add the new character to the output text
-				tx_frame[16 + text_length] = new_char;
-				text_length++;
-				//printf ("wewnatrz tu	 tu");
-				tx_frame[16 + text_length] = '\0';
-				//alt_printf( "%c", szyfr_new_char );
-			//	printf( "x%2X", new_char);
-		//		printf( "x%2X", szyfr_new_char);
-			//	printf( "x%2X", bajt2);
-			//	printf ("%s", rx_frame);
-				//printf( "x%2X", bajt2);
-			}
-		}
-	//	*phy1 = *(tse + 0x2C);
-		//printf("Liczba odebranych pakietow: %X",phy1);
-		//alt_printf( "\nsend> " );
-		//text_length = 0;
-		//usleep(2000000);
-
-		//alt_avalon_sgdma_construct_mem_to_stream_desc( &tx_descriptor, &tx_descriptor_end, rx_frame, 90, 0, 1, 1, 0 );
-		//alt_avalon_sgdma_do_async_transfer( sgdma_tx_dev, &tx_descriptor );
-		//while (alt_avalon_sgdma_check_descriptor_status(&tx_descriptor) != 0)
-		//	;
+*/if (ifdecipher_udp==2)
+	{
+		printf("udp_data");
 	}
-*/
+	wprowadzenie_adresow_ip_do_3des();
+
 
 	 while(1)
-	 {	//printf("petla while odbieranie i wysylanie");
-
-	//	 while (alt_avalon_sgdma_check_descriptor_status(&rx_descriptor) != 0);
-
-		// printf("petla while odbieranie i wysylanie");
-
+	 {
 	 }
-	 //TODO
-	 /*	int j=0;
-	 	printf("WYpisanie adresow pamieci dla blok_testowy\n");
-	 	while (j<64)
-	 	{
-	 		printf("blok_testowy %i : %i \n", j,&blok_testowy[j]);
-	 		j++;
-	 	}
-	 	j=0;
-	 	printf("WYpisanie adresow pamieci dla blok_wynikow \n");
-		while (j<64)
-		{
-			printf("blok_wynikow %i : %i \n", j,&blok_wynikow[j]);
-			j++;
-		}
-*/
+
+
 	return 0;
 
 }
@@ -492,172 +355,58 @@ printf("Rozpoczecie dzialania programu\n");
 
 void rx_ethernet_isr (void *context)
 {
-	//int i;
-	//DLugosc pakietu
-
 	struct netif * netif = &TSE1netif;
-	//lwip_tse_info* tse_ptr = (lwip_tse_info *) context;
-
-
-	// Wait until receive descriptor transfer is complete
+	//Poczekanie na zakoñczenie odbioru ramki ethernetowej z³¹czem po³¹czonym z eth_tse
 	while (alt_avalon_sgdma_check_descriptor_status(&rx_descriptor) != 0)
 		;
+	//zapisanie do zmiennej pklen dlugosci odebranej ramki ethernetowej
 	pklen = IORD_16DIRECT(&(rx_descriptor.actual_bytes_transferred),0);
-	//printf("dlugosc odebranych danych to: %d",pklen);
-	// Clear input line before writing
-	//for (i = 0; i < (6 + text_length); i++) {
-	//	alt_printf( "%c", 0x08 );		 // 0x1024008 --> backspace
-	//}
-
-	// Output received text
-//	alt_printf( "receive> %s\n", rx_frame + 16  );
-	//i=0;
-	// Set up non-blocking transfer of sgdma receive descriptor
-
-	//int speed=alt_tse_mac_get_common_speed( ETH_TSE_BASE);
-	//printf("Currents speed:  %i",speed);
-	//printf("\n");
-	//unsigned int *readtse;
-	//*readtse=
-	//volatile int * tse = (int *) ETH_TSE_BASE;
-	//*(tse + 0x3A)=0x00040000;
-
-	 //printf("Readtse : %i",readtse);
-//	printf("\n");
-	//		printf("odebrano ramke \n");
-			//TODO usunac dla poprawienia wydajnosci
-	/*while(i<pklen)
-	 {
-				alt_printf( "%x", rx_frame[i] );
-				i++;// 0x1024008 --> backspaces
-				if (rx_frame[i] =='\n')
-				{
-					i=1024;
-				}
-			}*/
 
 	memcpy(tx_frame,rx_frame,pklen);
 	p->payload=tx_frame;
-	//TODO ogarnac to: ethernet_input
+	// funkcja lwip ethernet_input obslugujaca ramkê Ethernetow¹
 	ethernet_input(p,netif);
 
-	// Reprint current input line after the outputs
-//	alt_printf( "send> %s", tx_frame + 16 );
-	//i=0;
-	/*while (i<7)
-	{
-	tx_frame[i]=0x55;
-	i++;
-	}
-	tx_frame[7]=0xD5;*/
-	//TODO zooptymalizowac to uzyc memcpy:
-	/*while (i<8)
-		{
-			tx_frame[i]=0xFF;
-			i++;
-		}
-		tx_frame[0]=0x00;
-		tx_frame[1]=0x00;
-		tx_frame[8]=0x01;
-		tx_frame[9]=0x60;
-		tx_frame[10]=0x6E;
-		tx_frame[11]=0x11;
-		tx_frame[12]=0x02;
-		tx_frame[13]=0x0F;*/
-/*	while (i<8)
-	{
-		rx_frame[i]=0xFF;
-		i++;
-	}
-	//TODO ustawienie adresu MAC wychodzacego i przychodzacego mozna wylaczyc, ze wzgledu na uczynienie system "przezroczystym"
-	rx_frame[0]=0x00;
-	rx_frame[1]=0x00;
-	rx_frame[8]=0x01;
-	rx_frame[9]=0x60;
-	rx_frame[10]=0x6E;
-	rx_frame[11]=0x11;
-	rx_frame[12]=0x02;
-	rx_frame[13]=0x0F;*/
-	//Poprawic wartosc pklen na inna
-	//tx_frame[12]=0x08;
-	//tx_frame[13]=0x00;
-	//i=14;
-	/*
-	while (i <pklen-4)
-	{
-		tx_frame[i]=rx_frame[i];
-		i++;
-	}*/
-
-	//tx_frame[88]='\0';
-	//TODO uaktualnic wartosc pklen UAKTUALNIONA JEST W INNYM MIEJSCU
-	/*
-	alt_avalon_sgdma_construct_mem_to_stream_desc( &tx_descriptor1, &tx_descriptor_end1, (alt_u32 *)tx_frame, pklen-4, 0, 1, 1, 0 );
-	alt_avalon_sgdma_do_async_transfer( sgdma_tx_dev, &tx_descriptor1 );
+	//Wys³anie ramki ethernetowej z³¹czem po³¹czonym z eth_tse1
+	alt_avalon_sgdma_construct_mem_to_stream_desc( &tx_descriptor1,
+			&tx_descriptor_end1, (alt_u32 *)tx_frame, pklen-4, 0, 1, 1, 0 );
+	alt_avalon_sgdma_do_async_transfer( sgdma_tx_dev1, &tx_descriptor1 );
 	while (alt_avalon_sgdma_check_descriptor_status(&tx_descriptor1) != 0);
-*/
-	alt_avalon_sgdma_construct_mem_to_stream_desc( &tx_descriptor, &tx_descriptor_end, (alt_u32 *)tx_frame, pklen-4, 0, 1, 1, 0 );
-	alt_avalon_sgdma_do_async_transfer( sgdma_tx_dev, &tx_descriptor );
-	while (alt_avalon_sgdma_check_descriptor_status(&tx_descriptor) != 0);
-	//ff_tx_eop=1;
-	alt_avalon_sgdma_construct_stream_to_mem_desc( &rx_descriptor, &rx_descriptor_end, (alt_u32 *)rx_frame, 0, 0 );
+
+	//Ponowne skonsturowanie deskryptorów odbiorczych z³¹cza eth_tse
+	alt_avalon_sgdma_construct_stream_to_mem_desc( &rx_descriptor,
+			&rx_descriptor_end, (alt_u32 *)rx_frame, 0, 0 );
 
 	alt_avalon_sgdma_do_async_transfer( sgdma_rx_dev, &rx_descriptor );
 
-
-	//alt_avalon_sgdma_do_async_transfer( sgdma_rx_dev, &rx_descriptor );
-
+	//wyzerowanie pól z d³ugociami bufora lwIP
 	p->len=0;
 	p->tot_len=0;
-
-	printf("\n");
-	printf("zakonczono odbior ramki\n");
-
-	// Create new receive sgdma descriptor
-	//	alt_avalon_sgdma_construct_stream_to_mem_desc( &rx_descriptor, &rx_descriptor_end, (alt_u32 *)rx_frame, 0, 0 );
 }
 
 void rx_ethernet_isr1 (void *context)
 {
-		int i;
 		struct netif * netif = &TSE1netif;
-		// Wait until receive descriptor transfer is complete
+		//Poczekanie na zakoñczenie odbióru ramki ethernetowej z³¹czem po³¹czonym z eth_tse1
 		while (alt_avalon_sgdma_check_descriptor_status(&rx_descriptor1) != 0)
 			;
-		printf( "Drugie zlacze odebralo ramke \n" );
+		//dl odebranej ramki
 		pklen = IORD_16DIRECT(&(rx_descriptor1.actual_bytes_transferred),0);
-		printf("dlugosc odebranych danych to: %d",pklen);
+		//printf("dlugosc odebranych danych to: %d",pklen);
 		memcpy(tx_frame,rx_frame1,pklen);
 		p->payload=tx_frame;
 
-		//TODO ogarnac to: ethernet_input
+
 		ethernet_input(p,netif);
 
-		// Clear input line before writing
-	/*	for (i = 0; i < (6 + text_length); i++) {
-			alt_printf( "%c", 0x08 );		 // 0x1024008 --> backspace
-		}
 
-		// Output received text
-	//	alt_printf( "receive> %s\n", rx_frame + 16  );
-		i=0;
-		while(rx_frame1[i] != NULL)
-		 {
-					printf( "%c", rx_frame1[i] );
-					i++;// 0x1024008 --> backspace
-				}
-				*/
-		// Reprint current input line after the output
-		//alt_printf( "send> %s", tx_frame + 16 );
-
-		// Create new receive sgdma descriptor
 		alt_avalon_sgdma_construct_mem_to_stream_desc( &tx_descriptor, &tx_descriptor_end, (alt_u32 *)tx_frame, pklen-4, 0, 1, 1, 0 );
 		alt_avalon_sgdma_do_async_transfer( sgdma_tx_dev, &tx_descriptor );
 		while (alt_avalon_sgdma_check_descriptor_status(&tx_descriptor) != 0);
 
 		alt_avalon_sgdma_construct_stream_to_mem_desc( &rx_descriptor1, &rx_descriptor_end1, (alt_u32 *)rx_frame1, 0, 0 );
 
-		// Set up non-blocking transfer of sgdma receive descriptor
+
 		alt_avalon_sgdma_do_async_transfer( sgdma_rx_dev1, &rx_descriptor1 );
 		p->len=0;
 		p->tot_len=0;
@@ -1131,25 +880,20 @@ void wprowadzenie_kluczy()
 void init_3des_pot (unsigned int key11,unsigned int key12,unsigned int key21,unsigned int key22,unsigned int key31,unsigned int key32)
 {
 	IOWR_32DIRECT (A_3DESCRYPT_POT_1_BASE,0x00000000,key11); //wprowadzenie pierwszej polowy klucza 1
-	unsigned int iserted_key11 = IORD_32DIRECT(A_3DESCRYPT_POT_1_BASE,0x0000001C);
-
+	//unsigned int iserted_key11 = IORD_32DIRECT(A_3DESCRYPT_POT_1_BASE,0x0000001C);
 	IOWR_32DIRECT (A_3DESCRYPT_POT_1_BASE,0x00000004,key12); //wprowadzenie drugiej polowy klucza 1
-	unsigned int iserted_key12 = IORD_32DIRECT(A_3DESCRYPT_POT_1_BASE,0x00000020);
-	printf("Klucz pierwszy: 0x%x%x \n",iserted_key11,iserted_key12);
-
+	//unsigned int iserted_key12 = IORD_32DIRECT(A_3DESCRYPT_POT_1_BASE,0x00000020);
+	//printf("Klucz pierwszy: 0x%x%x \n",iserted_key11,iserted_key12);
 	IOWR_32DIRECT (A_3DESCRYPT_POT_1_BASE,0x00000008,key21);//wprowadzenie pierwszej polowy klucza 2
-	unsigned int iserted_key21 = IORD_32DIRECT(A_3DESCRYPT_POT_1_BASE,0x00000024);
-
+	//unsigned int iserted_key21 = IORD_32DIRECT(A_3DESCRYPT_POT_1_BASE,0x00000024);
 	IOWR_32DIRECT(A_3DESCRYPT_POT_1_BASE,0x0000000C,key22); //wprowadzenie drugiej polowy klucza 2
-	unsigned int iserted_key22 = IORD_32DIRECT(A_3DESCRYPT_POT_1_BASE,0x00000028);
-	printf("Klucz drugi: 0x%x%x \n",iserted_key21,iserted_key22);
-
+	//unsigned int iserted_key22 = IORD_32DIRECT(A_3DESCRYPT_POT_1_BASE,0x00000028);
+	//printf("Klucz drugi: 0x%x%x \n",iserted_key21,iserted_key22);
 	IOWR_32DIRECT ( A_3DESCRYPT_POT_1_BASE,0x00000010,key31);//wprowadzenie pierwszej polowy klucza 3
-	unsigned int iserted_key31 = IORD_32DIRECT(A_3DESCRYPT_POT_1_BASE,0x0000002C);
-
+	//unsigned int iserted_key31 = IORD_32DIRECT(A_3DESCRYPT_POT_1_BASE,0x0000002C);
 	IOWR_32DIRECT(A_3DESCRYPT_POT_1_BASE,0x000000014,key32); //wprowadzenie drugiej polowy klucza 3
-	unsigned int iserted_key32 = IORD_32DIRECT(A_3DESCRYPT_POT_1_BASE,0x00000030);
-	printf("Klucz trzeci: 0x%x%x \n",iserted_key31,iserted_key32);
+	//unsigned int iserted_key32 = IORD_32DIRECT(A_3DESCRYPT_POT_1_BASE,0x00000030);
+	//printf("Klucz trzeci: 0x%x%x \n",iserted_key31,iserted_key32);
 }
 /**
  * Wprowadzenie klucza do modulu  deszyfrujacego Triple DES potokowego
@@ -1157,177 +901,60 @@ void init_3des_pot (unsigned int key11,unsigned int key12,unsigned int key21,uns
 void init_3des_decrypt_pot (unsigned int key11,unsigned int key12,unsigned int key21,unsigned int key22,unsigned int key31,unsigned int key32)
 {
 	IOWR_32DIRECT (A_3DESDECRYPT_POT_0_BASE,0x00000000,key11); //wprowadzenie pierwszej polowy klucza 1
-	unsigned int iserted_key11 = IORD_32DIRECT(A_3DESDECRYPT_POT_0_BASE,0x0000001C);
-
+	//unsigned int iserted_key11 = IORD_32DIRECT(A_3DESDECRYPT_POT_0_BASE,0x0000001C);
 	IOWR_32DIRECT (A_3DESDECRYPT_POT_0_BASE,0x00000004,key12); //wprowadzenie drugiej polowy klucza 1
-	unsigned int iserted_key12 = IORD_32DIRECT(A_3DESDECRYPT_POT_0_BASE,0x00000020);
+	//unsigned int iserted_key12 = IORD_32DIRECT(A_3DESDECRYPT_POT_0_BASE,0x00000020);
 	//printf("Klucz pierwszy: 0x%x%x \n",iserted_key11,iserted_key12);
-
 	IOWR_32DIRECT (A_3DESDECRYPT_POT_0_BASE,0x00000008,key21);//wprowadzenie pierwszej polowy klucza 2
-	unsigned int iserted_key21 = IORD_32DIRECT(A_3DESDECRYPT_POT_0_BASE,0x00000024);
-
+	//unsigned int iserted_key21 = IORD_32DIRECT(A_3DESDECRYPT_POT_0_BASE,0x00000024);
 	IOWR_32DIRECT(A_3DESDECRYPT_POT_0_BASE,0x0000000C,key22); //wprowadzenie drugiej polowy klucza 2
-	unsigned int iserted_key22 = IORD_32DIRECT(A_3DESDECRYPT_POT_0_BASE,0x00000028);
+	//unsigned int iserted_key22 = IORD_32DIRECT(A_3DESDECRYPT_POT_0_BASE,0x00000028);
 	//printf("Klucz drugi: 0x%x%x \n",iserted_key21,iserted_key22);
-
 	IOWR_32DIRECT ( A_3DESDECRYPT_POT_0_BASE,0x00000010,key31);//wprowadzenie pierwszej polowy klucza 3
-	unsigned int iserted_key31 = IORD_32DIRECT(A_3DESDECRYPT_POT_0_BASE,0x0000002C);
-
+	//unsigned int iserted_key31 = IORD_32DIRECT(A_3DESDECRYPT_POT_0_BASE,0x0000002C);
 	IOWR_32DIRECT(A_3DESDECRYPT_POT_0_BASE,0x000000014,key32); //wprowadzenie drugiej polowy klucza 3
-	unsigned int iserted_key32 = IORD_32DIRECT(A_3DESDECRYPT_POT_0_BASE,0x00000030);
+	//unsigned int iserted_key32 = IORD_32DIRECT(A_3DESDECRYPT_POT_0_BASE,0x00000030);
 	//printf("Klucz trzeci: 0x%x%x \n",iserted_key31,iserted_key32);
 }
+
 /**
- * Funkcja realizujaca szyfrowanie z uzyciem modulu potowej wersji Triple DES
+ * Funkcja realizujaca szyfrowanie z uzyciem modulu potokowej wersji Triple DES
  */
 void ciph_3des_pot ( unsigned char *data, unsigned char *ciph_data, unsigned int length)
 {
-		/*alt_avalon_sgdma_construct_stream_to_mem_desc( &tdesout_descriptor, &tdesout_descriptor_end, ciph_data, 0, 0 );
-		//printf("tdesout_descriptor: %i \n",tdesout_descriptor);
-		//printf("Adres blok blok_wynikow: %i \n",&blok_wynikow );
-		 if(alt_avalon_sgdma_do_async_transfer( sgdma_out_dev, &tdesout_descriptor ) != 0)
-		  {
-			printf("Zapis od szyfratora 3DES do pamieci sie nie powiodl\n");
-
-		  }
-*/
-	//int i=0;
-	/*
-	printf("ciph_3des_pot, DANE DO ZASZYFROWANIA: \n");
-	while(i<length)
-		{
-
-			if(data[i]>15)
-					{
-						if(i%8==0)
-						{
-							printf("\n0x%X",data[i]);
-						}
-						else
-						{
-							printf("%X",data[i]);
-						}
-					}
-					else
-					{
-						if(i%8==0)
-						{
-							printf("\n0x0%X",data[i]);
-						}
-						else
-						{
-							printf("0%X",data[i]);
-						}
-					}
-
-			i++;
-		}
-	*/
-	//printf("ciph_3des_pot: 1 data: %x \n",&data);
-	//while (alt_avalon_sgdma_check_descriptor_status(&tdesdecryptout_descriptor) != 0);
-	//while (alt_avalon_sgdma_check_descriptor_status(&tdesdecryptin_descriptor) != 0);
-	//data+=4;
-	alt_avalon_sgdma_construct_mem_to_stream_desc( &tdesin_descriptor, &tdesin_descriptor_end, (alt_u32 *)data, length, 0, 1, 1, 0 );
-	//printf("length: %i \n",length);
-	//printf("tdesin_descriptor: %i \n",tdesin_descriptor);
-	printf("Adres blok testowy: %i \n",data);
-	//printf("Adres blok testowy: %i \n",&blok_testowy);
-	//printf("Adres blok wynikow: %i \n",ciph_data);
-	//printf("tdesin_descriptor_end: %i \n",tdesin_descriptor_end);
-	//alt_avalon_sgdma_do_async_transfer( sgdma_in_dev, &tdesin_descriptor ) ;
+	//przes³anie danych do zaszyfrowania:
+	alt_avalon_sgdma_construct_mem_to_stream_desc( &tdesin_descriptor,
+			&tdesin_descriptor_end, (alt_u32 *)data, length, 0, 1, 1, 0 );
 
 	while(alt_avalon_sgdma_do_async_transfer( sgdma_in_dev, &tdesin_descriptor ) != 0)
-	{
-		printf("Zapis do szyfratora 3DES sie nie powiodl\n");
+	{		printf("Zapis do szyfratora 3DES sie nie powiodl\n");	}
+	//zapis do pamieci zaszyfrowanych danych:
+	alt_avalon_sgdma_construct_stream_to_mem_desc( &tdesout_descriptor,
+			&tdesout_descriptor_end, (alt_u32 *)ciph_data, 0, 0 );
 
-	}
-
-	//while (alt_avalon_sgdma_check_descriptor_status(&tdesin_descriptor) != 0);
-	//ff_tx_eop=1;
-	//while (alt_avalon_sgdma_check_descriptor_status(&tdesin_descriptor) != 0)
-	//	;
-	//printf("ciph_3des_pot: 2 \n");
-
-	//printf("ciph_3des_pot: 3 , ciph_data: %x \n",&ciph_data);
-	//while (alt_avalon_sgdma_check_descriptor_status(&tdesout_descriptor) != 0)
-	//					;
-	//printf("tdesout_descriptor: %X \n",&tdesout_descriptor);
-
-
-	alt_avalon_sgdma_construct_stream_to_mem_desc( &tdesout_descriptor, &tdesout_descriptor_end, (alt_u32 *)ciph_data+4, 0, 0 );
-	//alt_avalon_sgdma_do_async_transfer( sgdma_out_dev, &tdesout_descriptor );
-	while((alt_avalon_sgdma_do_async_transfer( sgdma_out_dev, &tdesout_descriptor ) != 0))
-	{
-
-	}
-
-	//printf("tdesout_descriptor: %i \n",tdesout_descriptor);
-	//printf("Adres blok blok_wynikow: %i \n",&blok_wynikow );
-	/* if(alt_avalon_sgdma_do_async_transfer( sgdma_out_dev, &tdesout_descriptor ) != 0)
-	  {
-		printf("Zapis od szyfratora 3DES do pamieci sie nie powiodl\n");
-
-	  }
-	// while (alt_avalon_sgdma_check_descriptor_status(&tdesout_descriptor) != 0)
-	// 						;
-	 i=0;
-	 /*	printf("ciph_3des_pot, DANE PO ZASZYFROWANIU: \n");
-	 	while(i<length)
-	 		{
-
-	 			if(ciph_data[i]>15)
-	 					{
-	 						if(i%8==0)
-	 						{
-	 							printf("\n0x%X",ciph_data[i]);
-	 						}
-	 						else
-	 						{
-	 							printf("%X",ciph_data[i]);
-	 						}
-	 					}
-	 					else
-	 					{
-	 						if(i%8==0)
-	 						{
-	 							printf("\n0x0%X",ciph_data[i]);
-	 						}
-	 						else
-	 						{
-	 							printf("0%X",ciph_data[i]);
-	 						}
-	 					}
-
-	 			i++;
-	 		}*/
+	while((alt_avalon_sgdma_do_async_transfer( sgdma_out_dev, &tdesout_descriptor ) != 0));
 }
 
 /**
- * Funkcja realizujaca deszyfrowanie z uzyciem modulu potowej wersji Triple DES
+ * Funkcja realizujaca deszyfrowanie z uzyciem modulu potokowej wersji Triple DES
  */
 void deciph_3des_pot ( unsigned char *data, unsigned char *deciph_data, unsigned int length)
 {
-	//while (alt_avalon_sgdma_check_descriptor_status(&tdesdecryptout_descriptor) != 0);
+	//przes³anie do zdeszyfrowania:
+	alt_avalon_sgdma_construct_mem_to_stream_desc( &tdesdecryptin_descriptor,
+			&tdesdecryptin_descriptor_end, (alt_u32 *)data, length, 0, 1, 1, 0 );
 
-	alt_avalon_sgdma_construct_mem_to_stream_desc( &tdesdecryptin_descriptor, &tdesdecryptin_descriptor_end, (alt_u32 *)data, length, 0, 1, 1, 0 );
-	//alt_avalon_sgdma_do_async_transfer( sgdma_in_decrypt_dev, &tdesdecryptin_descriptor );
 	while(alt_avalon_sgdma_do_async_transfer( sgdma_in_decrypt_dev, &tdesdecryptin_descriptor ) != 0) ;
-	//printf("deciph_3des_pot: 1 \n");
-	//while (alt_avalon_sgdma_check_descriptor_status(&tdesdecryptin_descriptor) != 0);
-	//ff_tx_eop=1;
-	//while (alt_avalon_sgdma_check_descriptor_status(&tdesin_descriptor) != 0)
-	//	;
-	//printf("deciph_3des_pot: 2 \n");
-	//while (alt_avalon_sgdma_check_descriptor_status(&tdesdecryptout_descriptor) != 0)
-	//			;
-	//printf("deciph_3des_pot: 3 \n");
-	alt_avalon_sgdma_construct_stream_to_mem_desc( &tdesdecryptout_descriptor, &tdesdecryptout_descriptor_end, (alt_u32 *) deciph_data, 0, 0 );
-	//alt_avalon_sgdma_do_async_transfer( sgdma_out_decrypt_dev, &tdesdecryptout_descriptor );
+	//zapis do pamieci zdeszyfrowanych danych:
+	alt_avalon_sgdma_construct_stream_to_mem_desc( &tdesdecryptout_descriptor,
+			&tdesdecryptout_descriptor_end, (alt_u32 *) deciph_data, 0, 0 );
+
 	while(alt_avalon_sgdma_do_async_transfer( sgdma_out_decrypt_dev, &tdesdecryptout_descriptor ) != 0) ;
-
-
-
 }
+
+
+
+
 void tdes_cryptpot_isr (void *context)
 {
 
@@ -1384,7 +1011,8 @@ void test_wydajnosci_3des_pot()
 		i++;
 	 }
 	PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE); //zakonczenie pracy wszystkich licznikow
-	perf_print_formatted_report((void* )PERFORMANCE_COUNTER_0_BASE,	ALT_CPU_FREQ*2,2,"3Des_pot 1MB szyfr","3Des_pot 1MB deszyfr"); //generacja raportu
+	perf_print_formatted_report((void* )PERFORMANCE_COUNTER_0_BASE,
+			ALT_CPU_FREQ*2,2,"3Des_pot 1MB szyfr","3Des_pot 1MB deszyfr"); //generacja raportu
 
 }
 
@@ -1423,24 +1051,24 @@ void wprowadzenie_adresow_ip_do_3des()
 	 udp_ciph_ip4_addr1=192;
 	 udp_ciph_ip4_addr2=168;
 	 udp_ciph_ip4_addr3=0;
-	 udp_ciph_ip4_addr4=7;
-	 udp_ciph_ip4_port=0;
+	 udp_ciph_ip4_addr4=16;
+	 udp_ciph_ip4_port=24;
 
 	 udp_deciph_ip4_addr1=192;
 	 udp_deciph_ip4_addr2=168;
 	 udp_deciph_ip4_addr3=0;
-	 udp_deciph_ip4_addr4=7;
-	 udp_deciph_ip4_port=0;
+	 udp_deciph_ip4_addr4=15;
+	 udp_deciph_ip4_port=20;
 
 	 ip_ciph_ip4_addr1=192;
 	 ip_ciph_ip4_addr2=168;
 	 ip_ciph_ip4_addr3=0;
-	 ip_ciph_ip4_addr4=7;
+	 ip_ciph_ip4_addr4=10;
 
 	 ip_deciph_ip4_addr1=192;
 	 ip_deciph_ip4_addr2=168;
 	 ip_deciph_ip4_addr3=0;
-	 ip_deciph_ip4_addr4=7;
+	 ip_deciph_ip4_addr4=13;
 }
 struct netif* inicjalizacja_netif (struct netif *netif)
 {

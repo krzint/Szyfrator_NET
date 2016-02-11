@@ -484,7 +484,7 @@
  * Be careful, disable that make your product non-compliant to RFC1122
  */
 #ifndef LWIP_ICMP
-#define LWIP_ICMP                       1
+#define LWIP_ICMP                       0
 #endif
 
 /**
