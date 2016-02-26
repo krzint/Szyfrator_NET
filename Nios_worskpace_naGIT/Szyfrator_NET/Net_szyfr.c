@@ -1,7 +1,7 @@
 /*
  * Net_szyfr.c
  *
- *  Created on: 26-08-2013
+ *  Created on: 26-08-2014
  *      Author: Krzysiek
  */
 
@@ -30,7 +30,7 @@
 #include "lwip/ip_frag.h"
 #include "lwip/ip_addr.h"
 #include "netif/etharp.h"
-#include "alteraTseEthernetif.h"
+//todo #include "alteraTseEthernetif.h"
 
 
 void rx_ethernet_isr (void *context);
@@ -66,10 +66,10 @@ unsigned int result2;
 
 
 
-//TODO ramki testowe dla 3DES
+//ramki testowe dla 3DES
 unsigned char blok_testowy[1528] = { 0 };
 unsigned char blok_wynikow[1528] = { 0 };
-//TODO ramki testowe dla deszyfratora 3DES
+//ramki testowe dla deszyfratora 3DES
 unsigned char blok_testowy_deszyfracja[1528] = { 0 };
 unsigned char blok_wynikow_deszyfracja[1528] = { 0 };
 
@@ -145,31 +145,12 @@ unsigned int  wyniki[1024]={0};
 unsigned int key11=0x01234567,  key12=0x89ABCDEF,  key21=0xFEDCAB89,  key22=0x76543210,  key31=0xF0E1D2C3,  key32=0xB4A59687;
 
 
-//  Zdefiniowanie netif dla lwIP
-//struct netif    alteraTseNetif;
-/* Base-Structure for all lwIP TSE information TODO do usuniecia */
-typedef struct _lwip_tse_info
-{
-   tse_mac_trans_info mi; /* MAC base driver data. */
-
-   // Location for the SGDMA Descriptors
-   alt_sgdma_descriptor *desc;
-
-   // lwIP Ethernetif structure
-   struct ethernetif   *ethernetif;
-
-   // Hardware location
-   alt_tse_system_info *tse;
-
-} lwip_tse_info;
 
 
 
 
 
 
-
-//TODO zadeklarowac netif
 struct pbuf *p;
 
 
@@ -177,7 +158,7 @@ int main (int argc, char* argv[], char* envp[])
 {
 	static struct ip_addr   ip_zero = { 0 };
 /*
- * Deklaracja adresu MAC w netif dla pierwszego zlacza Ethernet TODO zrobiæ to samo ale dla drugiego z³¹cza
+ * Deklaracja adresu MAC w netif( dla wersji z uzyciem pelnego lwIP)
  */
 	TSE1netif.hwaddr[0] = 0x11;
 	TSE1netif.hwaddr[1] = 0x6E;
@@ -189,14 +170,7 @@ int main (int argc, char* argv[], char* envp[])
 
 printf("Rozpoczecie dzialania programu\n");
 
-//TODO inicjalizacja netif_add
-/*	if(netif_add(&TSE1netif, &ip_zero, &ip_zero, &ip_zero, TSE1netif.state, ethernetif_init, ethernet_input) == NULL)
-		{
-		printf( "Fatal error initializing...\n" );
-		//for(;;);
-		}
-*/
-//	printf("OK\n");
+
 
 	//Otworzenie SGDMA transmitujacego dane do TSE0
 	sgdma_tx_dev = alt_avalon_sgdma_open ("/dev/sgdma_tx");
@@ -326,17 +300,18 @@ printf("Rozpoczecie dzialania programu\n");
 	 *(tse + 2) = *(tse + 2) |0x040001F3;
 	 *(tse1 + 2) = *(tse1 + 2) |0x040001F3;
 
-	 printf( "send> \n" );
+	// printf( "send> \n" );
 	 text_length = 0;
 	// wprowadzenie_kluczy(); //Wprowadzenie wartosci kluczy ktore mialy byc uzywane przy transmisji Ethernet
 	 weryfikacja_szyfrowania (); //tutaj ustawione zostaja wartosci kluczy szyfratora 3des
 	 //usleep(2500000);
 	 weryfikacja_deszyfrowania();//tutaj ustawione zostaja wartosci kluczy deszyfratora 3des
-	 /* TODO odkomentowac jezeli chce sie przeprowadzic test wydajnosci szyfrowania na ukladzie FPGA
+	 // TODO odkomentowac jezeli chce sie przeprowadzic test wydajnosci szyfrowania na ukladzie FPGA
 	 test_wydajnosc ();
 	test_wydajnosci_sram();
 	test_wydajnosci_3des_pot();
-*/if (ifdecipher_udp==2)
+	printf("adres udp_Data: %i", &blok_wynikow);
+if (ifdecipher_udp==2)
 	{
 		printf("udp_data");
 	}
@@ -797,14 +772,9 @@ void przeprowadzenie_szyfrowania_sram()
 
 	while(k<256)
 	{
-	/*alt_avalon_sgdma_construct_mem_to_mem_desc(&read_descriptor,&read_descriptor_end,(alt_u32 *) sram_adres_read,(alt_u32*)*dane,(alt_u16)4096,0,0);
-	alt_avalon_sgdma_do_async_transfer( sgdma_read_3des, &read_descriptor );
-	while (alt_avalon_sgdma_check_descriptor_status(&read_descriptor) != 0);
-	*/
+
 	paczka_szyfrowanie();
-	/*alt_avalon_sgdma_construct_mem_to_mem_desc(&read_descriptor,&read_descriptor_end,(alt_u32 *) *wyniki,(alt_u32*)sram_adres_write,(alt_u16)4096,0,0);
-	alt_avalon_sgdma_do_async_transfer( sgdma_read_3des, &read_descriptor );
-	while (alt_avalon_sgdma_check_descriptor_status(&read_descriptor) != 0);*/
+
 	sram_adres_read+=4096;
 	sram_adres_write+=4096;
 	k++;
@@ -822,14 +792,9 @@ void przeprowadzenie_deszyfrowania_sram()
 
 	while(k<256)
 	{
-	/*alt_avalon_sgdma_construct_mem_to_mem_desc(&read_descriptor,&read_descriptor_end,(alt_u32 *) sram_adres_read,(alt_u32*)*dane,(alt_u16)4096,0,0);
-	alt_avalon_sgdma_do_async_transfer( sgdma_read_3des, &read_descriptor );
-	while (alt_avalon_sgdma_check_descriptor_status(&read_descriptor) != 0);
-	*/
+
 	paczka_deszyfrowanie();
-	/*alt_avalon_sgdma_construct_mem_to_mem_desc(&read_descriptor,&read_descriptor_end,(alt_u32 *) *wyniki,(alt_u32*)sram_adres_write,(alt_u16)4096,0,0);
-	alt_avalon_sgdma_do_async_transfer( sgdma_read_3des, &read_descriptor );
-	while (alt_avalon_sgdma_check_descriptor_status(&read_descriptor) != 0);*/
+
 	sram_adres_read+=4096;
 	sram_adres_write+=4096;
 	k++;

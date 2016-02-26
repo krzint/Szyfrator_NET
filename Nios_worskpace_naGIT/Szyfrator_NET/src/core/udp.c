@@ -934,7 +934,7 @@ void cipher_UDP(unsigned char *dane_udp,  int *dlugosc_danych)
 		dane_udp[*dlugosc_danych-1]=dlugosc_danych_tmp;
 	}
 	//szyfrowanie danych udp
-	ciph_3des_pot(dane_udp,dane_udp_ciph-16,*dlugosc_danych);
+	ciph_3des_pot(dane_udp,dane_udp_ciph,*dlugosc_danych);
 }
 
 /*

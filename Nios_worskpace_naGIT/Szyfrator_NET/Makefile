@@ -196,11 +196,9 @@ C_SRCS += src/netif/ppp/ppp_oe.c
 C_SRCS += src/netif/ppp/randm.c
 C_SRCS += src/netif/ppp/vj.c
 C_SRCS += src/netif/slipif.c
-C_SRCS += alteraTseEthernetif.c
 C_SRCS += fs.c
 C_SRCS += fsdata.c
 C_SRCS += httpd.c
-C_SRCS += lwip_tse_mac.c
 CXX_SRCS :=
 ASM_SRCS :=
 

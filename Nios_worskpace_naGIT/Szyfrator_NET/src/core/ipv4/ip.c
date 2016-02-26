@@ -251,7 +251,7 @@ ip_input(struct pbuf *p, struct netif *inp)
 
   iphdr_hlen *= 4;
   ip_header_len=iphdr_hlen;
- // printf("iphdr_hlen: 0x%x\n",iphdr_hlen);
+
   /* obtain ip length in bytes */
   iphdr_len = ntohs(IPH_LEN(iphdr));
   total_ip_len=iphdr_len;
@@ -468,19 +468,24 @@ ip_input(struct pbuf *p, struct netif *inp)
 	if(ifcipher_ip==1)
 	{
 		int ip_len_tmp=ip_data_len;
+
 		memcpy(ip_data, tx_frame+16+ip_header_len, ip_len_tmp);
 		//szyfrowanie danych IP
 		cipher_IP(&ip_data,&ip_len_tmp);
+
 		//roznica w dlugosci pakietow
 		unsigned int diff_lngth=ip_len_tmp-ip_data_len;
 		//Wyliczenie nowej dlugosci ramki ethernetowej
 		pklen+=diff_lngth;
+
 		//Ponowne wyliczenie dlugosc calkowitej pakietu IP
 		total_ip_len=total_ip_len+diff_lngth;
+
 		//Ustawienie dlugosci pakietu IP
 		tx_frame[25]=0xFD;
 		wyslij_IP();
 		memcpy(  tx_frame+16+ip_header_len, dane_ip_ciph, ip_len_tmp);
+		//printf("tx_frame+16+ip_header_len : %i \n",16+ip_header_len);
 		return ERR_OK;
 
 	}
@@ -845,6 +850,7 @@ void porownanie_adresow_w_IP()
 void cipher_IP(unsigned char *dane_ip,  int *dlugosc_danych)
 {
 	int dlugosc_danych_tmp=*dlugosc_danych;
+
 	if (dlugosc_danych_tmp%8==0)
 	{
 		*dlugosc_danych+=8;
@@ -853,17 +859,18 @@ void cipher_IP(unsigned char *dane_ip,  int *dlugosc_danych)
 	{
 		*dlugosc_danych=(dlugosc_danych_tmp/8+2)*8;
 	}
+
 	if(dlugosc_danych_tmp>0xFF)
 	{
-		dane_ip[*dlugosc_danych-1]=dlugosc_danych_tmp;
-		dane_ip[*dlugosc_danych-2]=dlugosc_danych_tmp>>8;
+		dane_ip[(*dlugosc_danych)-1]=dlugosc_danych_tmp;
+		dane_ip[(*dlugosc_danych)-2]=dlugosc_danych_tmp>>8;
 	}
 	else
 	{
-		dane_ip[*dlugosc_danych-1]=dlugosc_danych_tmp;
+		dane_ip[(*dlugosc_danych)-1]=dlugosc_danych_tmp;
 	}
-	dane_ip[*dlugosc_danych-3]=ip_proto;
-	ciph_3des_pot(dane_ip,dane_ip_ciph-16,*dlugosc_danych);
+	dane_ip[(*dlugosc_danych)-3]=ip_proto;
+	ciph_3des_pot(dane_ip,dane_ip_ciph,*dlugosc_danych);
 
 }
 

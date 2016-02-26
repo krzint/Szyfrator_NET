@@ -38,8 +38,7 @@ obj/default/Net_szyfr.o: Net_szyfr.c \
  lwip/udp.h lwip/../Net_szyfr.h lwip/../lwip/netif.h lwip/ip_frag.h \
  lwip/ip_addr.h netif/etharp.h netif/../lwip/opt.h netif/../lwip/pbuf.h \
  netif/../lwip/ip_addr.h netif/../lwip/netif.h netif/../lwip/ip.h \
- netif/../arch/bpstruct.h netif/../arch/epstruct.h alteraTseEthernetif.h \
- lwip/err.h
+ netif/../arch/bpstruct.h netif/../arch/epstruct.h
 
 ../../Desktop/Repozytorium/SzyfratorCopy/Szyfrator_v2/software/Sztfrator_NET_BSP/drivers/inc/altera_avalon_sgdma.h:
 
@@ -174,7 +173,3 @@ netif/../lwip/ip.h:
 netif/../arch/bpstruct.h:
 
 netif/../arch/epstruct.h:
-
-alteraTseEthernetif.h:
-
-lwip/err.h:
